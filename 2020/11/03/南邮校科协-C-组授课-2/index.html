@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":240,"display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="🎯 本节课我们将学习C#的面向对象的基础, 以及面向对象的三大特性. 课程内容较长, 原计划为两小时完成. 自学的同学需要慎重….">
+<meta property="og:type" content="article">
+<meta property="og:title" content="南邮校科协-C#组授课(2)">
+<meta property="og:url" content="http://example.com/2020/11/03/%E5%8D%97%E9%82%AE%E6%A0%A1%E7%A7%91%E5%8D%8F-C-%E7%BB%84%E6%8E%88%E8%AF%BE-2/index.html">
+<meta property="og:site_name" content="花枝丸🍥的博客">
+<meta property="og:description" content="🎯 本节课我们将学习C#的面向对象的基础, 以及面向对象的三大特性. 课程内容较长, 原计划为两小时完成. 自学的同学需要慎重….">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://s1.52poke.wiki/wiki/thumb/0/0d/025Pikachu.png/260px-025Pikachu.png">
+<meta property="og:image" content="https://img-blog.csdn.net/20180410204003474?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTY2MDE2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180410204712153?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTY2MDE2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="article:published_time" content="2020-11-03T13:53:21.000Z">
+<meta property="article:modified_time" content="2020-11-30T14:03:00.133Z">
+<meta property="article:author" content="Hanamaru🍥Yabuki">
+<meta property="article:tag" content="C#">
+<meta property="article:tag" content="授课">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://s1.52poke.wiki/wiki/thumb/0/0d/025Pikachu.png/260px-025Pikachu.png">
+
+<link rel="canonical" href="http://example.com/2020/11/03/%E5%8D%97%E9%82%AE%E6%A0%A1%E7%A7%91%E5%8D%8F-C-%E7%BB%84%E6%8E%88%E8%AF%BE-2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>南邮校科协-C#组授课(2) | 花枝丸🍥的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">花枝丸🍥的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录自己作为CS学生的点滴</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">5</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">3</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">8</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/HanaYabuki" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/03/%E5%8D%97%E9%82%AE%E6%A0%A1%E7%A7%91%E5%8D%8F-C-%E7%BB%84%E6%8E%88%E8%AF%BE-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hanamaru🍥Yabuki">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="花枝丸🍥的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          南邮校科协-C#组授课(2)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-03 21:53:21" itemprop="dateCreated datePublished" datetime="2020-11-03T21:53:21+08:00">2020-11-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-30 22:03:00" itemprop="dateModified" datetime="2020-11-30T22:03:00+08:00">2020-11-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8E%88%E8%AF%BE/" itemprop="url" rel="index"><span itemprop="name">授课</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>🎯 本节课我们将学习C#的面向对象的基础, 以及面向对象的三大特性. 课程内容较长, 原计划为两小时完成. 自学的同学需要慎重….</p>
+<a id="more"></a>
+
+<hr>
+<h1 id="第二课-C-的面向对象"><a href="#第二课-C-的面向对象" class="headerlink" title="第二课 - C#的面向对象"></a>第二课 - C#的面向对象</h1><p>在第一节课中，我们学习了C#中几乎所有和C语言相似的语法部分，在本节课，我们将开始学习C#作为高级语言最重要的特性 - 面向对象。  </p>
+<p>少废话，有没有对象你都给我面（x</p>
+<hr>
+<h2 id="让我们重新审视一下最简单的-HelloWorld-工程"><a href="#让我们重新审视一下最简单的-HelloWorld-工程" class="headerlink" title="让我们重新审视一下最简单的 HelloWorld 工程"></a>让我们重新审视一下最简单的 HelloWorld 工程</h2><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">CS_ConsoleApp</span> &#123;</span><br><span class="line">	<span class="keyword">class</span> <span class="title">Program</span> &#123;</span><br><span class="line">		<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span> &#123;</span><br><span class="line">			Console.WriteLine(<span class="string">&quot;HelloWorld.&quot;</span>);</span><br><span class="line">			Console.ReadKey();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>他包含了：  </p>
+<ul>
+<li>命名空间使用 <em>using</em></li>
+<li>命名空间 <em>namespace</em></li>
+<li>一个类 class</li>
+<li>入口方法 Main</li>
+</ul>
+<p>下面，我们将从最基本的项目，逐层分析讲解 C# 作为高级语言的种种特性。</p>
+<h2 id="1-数组"><a href="#1-数组" class="headerlink" title="1. 数组"></a>1. 数组</h2><p>在前面的 helloworld程序中，我们可以看到，Main 方法的参数是一个 <code>String[]</code>，一个字符串数组（Array）。</p>
+<p>数组是一个存储<strong>相同类型元素</strong>的固定大小的顺序集合。</p>
+<p>在 C# 中声明一个数组，您可以使用下面的语法：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">datatype[] arrayName;</span><br></pre></td></tr></table></figure>
+
+<h3 id="初始化数组"><a href="#初始化数组" class="headerlink" title="初始化数组"></a>初始化数组</h3><p>声明一个数组不会在内存中初始化数组。当初始化数组变量时，您可以赋值给数组。</p>
+<p>数组是一个引用类型，所以您需要使用 new 关键字来创建数组的实例。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">double</span>[] values = <span class="keyword">new</span> <span class="built_in">double</span>[<span class="number">10</span>];</span><br></pre></td></tr></table></figure>
+
+<h3 id="赋值给数组"><a href="#赋值给数组" class="headerlink" title="赋值给数组"></a>赋值给数组</h3><h4 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h4><p>使用索引号赋值给一个单独的数组元素，比如：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">double</span>[] val = <span class="keyword">new</span> <span class="built_in">double</span>[<span class="number">10</span>];</span><br><span class="line">val[<span class="number">0</span>] = <span class="number">4500.0</span>;</span><br></pre></td></tr></table></figure>
+<p>注意，索引的范围是 0~9，而不是10</p>
+<h4 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h4><p>声明数组的同时给数组赋值：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">double</span>[] values = <span class="keyword">new</span> <span class="built_in">double</span>[<span class="number">3</span>]&#123; <span class="number">1.0</span>, <span class="number">2.0</span>, <span class="number">3.0</span> &#125;;</span><br></pre></td></tr></table></figure>
+<p>这种情况下，可以省略数组的长度</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">double</span>[] values = <span class="keyword">new</span> <span class="built_in">double</span>[]&#123; <span class="number">1.0</span>, <span class="number">2.0</span>, <span class="number">3.0</span> &#125;;</span><br></pre></td></tr></table></figure>
+<p>再懒一点，new 都给你省了</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">double</span>[] values = &#123; <span class="number">1.0</span>, <span class="number">2.0</span>, <span class="number">3.0</span> &#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="访问数组元素"><a href="#访问数组元素" class="headerlink" title="访问数组元素"></a>访问数组元素</h3><h4 id="随机访问"><a href="#随机访问" class="headerlink" title="随机访问"></a>随机访问</h4><p>就像和普通变量一样，只不过在数组名称后指定索引</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">double</span> val = values[<span class="number">1</span>]; <span class="comment">// 数组 values 中的第二个元素</span></span><br></pre></td></tr></table></figure>
+<h4 id="使用-forEach-遍历"><a href="#使用-forEach-遍历" class="headerlink" title="使用 forEach 遍历"></a>使用 forEach 遍历</h4><p>C#中，数组的遍历有一个更简单的办法，即使用forEach语句</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span>[] vals = &#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span> &#125;;</span><br><span class="line"><span class="keyword">foreach</span>(<span class="built_in">int</span> val <span class="keyword">in</span> vals)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(val);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>他比直接使用 for 循环更加简单直接</p>
+<h3 id="扩展：多维数组-和-交错数组"><a href="#扩展：多维数组-和-交错数组" class="headerlink" title="扩展：多维数组 和 交错数组"></a>扩展：多维数组 和 交错数组</h3><h4 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h4><p>C# 支持多维数组。多维数组又称为矩形数组。</p>
+<p>多维数组用逗号声明，访问需要指定每个索引</p>
+<p>索引规则如下:<br>对于 <code>val[2,3]</code> 有</p>
+<table>
+<thead>
+<tr>
+<th>—</th>
+<th>c0</th>
+<th>c1</th>
+<th>c2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>r0</td>
+<td>val[0,0]</td>
+<td>val[0,1]</td>
+<td>val[0,2]</td>
+</tr>
+<tr>
+<td>r1</td>
+<td>val[1,0]</td>
+<td>val[1,1]</td>
+<td>val[1,2]</td>
+</tr>
+</tbody></table>
+<p>举例：  </p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span>[,] vals = <span class="keyword">new</span> <span class="built_in">int</span>[<span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">&#123;</span><br><span class="line">    &#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span> &#125;,</span><br><span class="line">    &#123; <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span> &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">foreach</span> (<span class="built_in">int</span> val <span class="keyword">in</span> vals)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(val);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="交错数组"><a href="#交错数组" class="headerlink" title="交错数组"></a>交错数组</h4><p>即 数组的数组，形式上和C语言中的 多维数组 类似。</p>
+<p>不同的是，交错数组允许每行元素数量不一致</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span>[][] vals = <span class="keyword">new</span> <span class="built_in">int</span>[][] &#123;</span><br><span class="line">    <span class="keyword">new</span> <span class="built_in">int</span>[] &#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span> &#125;,</span><br><span class="line">    <span class="keyword">new</span> <span class="built_in">int</span>[] &#123; <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span> &#125;,</span><br><span class="line">    <span class="keyword">new</span> <span class="built_in">int</span>[] &#123; <span class="number">8</span> &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>同时，forEach 对他的遍历规则也不一样</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">foreach</span>(<span class="built_in">int</span>[] row <span class="keyword">in</span> vals)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">foreach</span>(<span class="built_in">int</span> v <span class="keyword">in</span> row) &#123;</span><br><span class="line">        Console.WriteLine(v);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>从本质上很容易理解。</p>
+<hr>
+<h2 id="2-方法-函数"><a href="#2-方法-函数" class="headerlink" title="2. 方法/函数"></a>2. 方法/函数</h2><p>一个方法是把一些相关的语句组织在一起，用来执行一个任务的语句块。</p>
+<p>方法的存在，是为了提升代码的可复用性，避免无意义的粘贴代码。</p>
+<p>C# 程序中，Main 就是一个方法，它会作为程序的入口。</p>
+<p>方法的定义如下：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;Access Specifier&gt; &lt;Return Type&gt; &lt;Method Name&gt;(Parameter List)</span><br><span class="line">&#123;</span><br><span class="line">   Method Body</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Access Specifier：访问修饰符，这个决定了变量或方法对于另一个类的可见性。</li>
+<li>Return type：返回类型，一个方法可以返回一个值。返回类型是方法返回的值的数据类型。如果方法不返回任何值，则返回类型为 void。</li>
+<li>Method name：方法名称，是一个唯一的标识符，且是大小写敏感的。它不能与类中声明的其他标识符相同。</li>
+<li>Parameter list：参数列表，使用圆括号括起来，该参数是用来传递和接收方法的数据。参数列表是指方法的参数类型、顺序和数量。参数是可选的，也就是说，一个方法可能不包含参数。</li>
+<li>Method body：方法主体，包含了完成任务所需的指令集。</li>
+</ul>
+<p><del>什么乱七八糟一堆</del></p>
+<p>我们声明一个简单的方法，来实现招新题中的<code>判断质数</code></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="built_in">bool</span> <span class="title">IsPrime</span>(<span class="params"><span class="built_in">int</span> x</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">int</span> i=<span class="number">2</span>;i&lt;x;++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (x % i == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Tips:</p>
+<ul>
+<li>这是一个 private 方法，对类外是不可见的（后面会讲呜呜呜）</li>
+<li>这里我们声明了一个静态（<code>static</code>）方法，来保证 Main 函数里面可以直接简单的调用他。（<code>static</code>关键字的含义我们会在接下来的面向对象中学习，别骂了别骂了，不挖坑了，马上就讲）</li>
+<li>函数名称 <code>IsPrime</code>  </li>
+<li>他 返还了一个 <code>bool</code> 值</li>
+<li>他 需要一个参数 <code>x</code></li>
+<li><del>招新这么写的全没给满分</del></li>
+</ul>
+<p>在实际应用中，例如 Unity 游戏的开发，我们会尽可能的将每一个小功能都划分为一个方法，来增强代码的逻辑层次，即便他们不需要复用（x</p>
+<h3 id="值传递-和-引用传递"><a href="#值传递-和-引用传递" class="headerlink" title="值传递 和 引用传递"></a>值传递 和 引用传递</h3><p>C# 招新题 中有这样一段代码：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Player</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">int</span> playerHp = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        HpUp(playerHp);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">HpUp</span>(<span class="params"><span class="built_in">int</span> hp</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        hp +=<span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>问为什么血并没有增加。</p>
+<p>因为 这个程序中的 函数调用 采用的值传递。调用函数的实际过程是 <strong><em>拷贝了一个playerHp</em></strong> 变量，传到了函数中，函数接受到的并不是真正的 playerHp，而是和他数值上相等的一个 <strong>拷贝</strong></p>
+<p>这道题的正确解法是，将变量的 <strong>引用</strong> 传入函数 <code>(ref)</code></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    HpUp(<span class="keyword">ref</span> playerHp);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">HpUp</span>(<span class="params"><span class="keyword">ref</span> <span class="built_in">int</span> hp</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    hp +=<span class="number">10</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这种写法，实际上我们需要的参数不再是一个 <code>int型变量</code>，而是一个 <code>int型变量的引用</code>。这样我们传入的参数也要更改为 <code>playerHp 的地址(引用)</code> ，对 hp 的改变自然也就会引起 playerHp 的改变。</p>
+<p><del>引用还有一种写法 out ，使用方法和 ref 有细微差别，我懒得讲了</del></p>
+<hr>
+<h2 id="3-类-和-对象"><a href="#3-类-和-对象" class="headerlink" title="3. 类 和 对象"></a><strong>3. 类 和 对象</strong></h2><p>重头戏来了。  </p>
+<p>C# 是一个完全符合面向对象思想的高级语言，C# 中，所有的对象都是基于类来实现的。</p>
+<p>在 C# 中，我们最初新建工程时，系统就会自动构建一个 Program 类作为程序的入口。C# 的任何要素都不能脱离类而存在。</p>
+<blockquote>
+<p>分析我们平时使用的 <code>Console.WriteLine(xxx);</code><br>我们可以找到大量的关于他的源码，可以看到 WriteLine 函数被写在一个 Console 静态类里，而他众多的重载，就是我们可以在其中填入各种类型参数的原因</p>
+</blockquote>
+<h3 id="最基本的应用"><a href="#最基本的应用" class="headerlink" title="最基本的应用"></a>最基本的应用</h3><p>当你定义一个类时，你就定义了一个数据类型的蓝图。</p>
+<p>这是一个类被定义的基本形式</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;access specifier&gt; <span class="keyword">class</span>  <span class="title">class_name</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// member variables</span></span><br><span class="line">    &lt;access specifier&gt; &lt;data type&gt; variable1;</span><br><span class="line">    &lt;access specifier&gt; &lt;data type&gt; variable2;</span><br><span class="line">    ...</span><br><span class="line">    &lt;access specifier&gt; &lt;data type&gt; variableN;</span><br><span class="line">    <span class="comment">// member methods</span></span><br><span class="line">    &lt;access specifier&gt; &lt;<span class="keyword">return</span> type&gt; method1(parameter_list)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// method body</span></span><br><span class="line">    &#125;</span><br><span class="line">    &lt;access specifier&gt; &lt;<span class="keyword">return</span> type&gt; method2(parameter_list)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// method body</span></span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">    &lt;access specifier&gt; &lt;<span class="keyword">return</span> type&gt; methodN(parameter_list)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// method body</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>访问标识符 access specifier 指定了对类及其成员的访问规则。如果没有指定，则使用默认的访问标识符。类的默认访问标识符是 internal，成员的默认访问标识符是 private。</li>
+<li>数据类型 data type 指定了变量的类型，返回类型 return type 指定了返回的方法返回的数据类型。</li>
+<li>如果要访问类的成员，你要使用点（.）运算符。</li>
+<li>点运算符链接了对象的名称和成员的名称。</li>
+</ul>
+<p>我们尝试使用一个 Pokemon 类 来讲解（以 Let’s Go为例）</p>
+<p>我们现在需要一种数据类型，用来表达一只宝可梦（暂时没有写很全）</p>
+<p><img data-src="http://s1.52poke.wiki/wiki/thumb/0/0d/025Pikachu.png/260px-025Pikachu.png" alt="皮卡丘！"></p>
+<h4 id="分析类的成员"><a href="#分析类的成员" class="headerlink" title="分析类的成员"></a>分析类的成员</h4><p>宝可梦有：</p>
+<ul>
+<li>名字</li>
+<li>身高</li>
+<li>体重</li>
+<li>属性/颜色？</li>
+<li>叫声</li>
+</ul>
+<p>宝可梦会：</p>
+<ul>
+<li>叫</li>
+</ul>
+<h4 id="基本代码实现"><a href="#基本代码实现" class="headerlink" title="基本代码实现"></a>基本代码实现</h4><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Pokemon</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">string</span> Name;</span><br><span class="line">    <span class="built_in">double</span> Height;</span><br><span class="line">    <span class="built_in">double</span> Weight;</span><br><span class="line">    ConsoleColor Color;</span><br><span class="line">    <span class="built_in">string</span> Sound;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Call</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        Console.Write(Name + <span class="string">&quot;说 : &quot;</span>);</span><br><span class="line">        <span class="comment">// 这里改变了控制台的颜色，让宝可梦说话可以按照自己的颜色</span></span><br><span class="line">        ConsoleColor tmp = Console.ForegroundColor;</span><br><span class="line">        Console.ForegroundColor = Color;</span><br><span class="line">        Console.WriteLine(Sound);</span><br><span class="line">        Console.ForegroundColor = tmp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Tips:<br>驼峰命名法：一种简短实用的命名方案。<br>即函数名中的每一个逻辑断点都有一个大写字母来标记。<br>在 C# 中，方法内的临时变量 采用小写字母开头(小驼峰)， 类的成员 采用大写字母开头（大驼峰）</p>
+</blockquote>
+<p>使用：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span><span class="params">(<span class="built_in">string</span>[] args)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Pokemon pikachu = <span class="keyword">new</span> Pokemon();</span><br><span class="line">    pikachu.Call();</span><br><span class="line">    Console.ReadKey();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在这个例子中，我们很轻松的构建了 C# 的一个类<br>然而，尴尬的事情发生了：</p>
+<ol>
+<li>皮卡丘不知道自己叫皮卡丘</li>
+<li>皮卡丘不知道皮卡丘怎么叫</li>
+<li>皮卡丘去不知道自己是什么颜色的</li>
+<li>皮卡丘叫不出声</li>
+</ol>
+<p>因为我们并没有给类中的属性赋值，类中的属性依然保持着自己的默认值。</p>
+<h3 id="面向对象三大特性：封装，继承，多态"><a href="#面向对象三大特性：封装，继承，多态" class="headerlink" title="面向对象三大特性：封装，继承，多态"></a>面向对象三大特性：封装，继承，多态</h3><h4 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h4><p>回到之前的皮卡丘难题：</p>
+<p>当我们用 <code>pikachu.Name</code> 符号去赋值时，发现自动提示中 <em>并没有相关成员的补全</em></p>
+<p>因为我们没有改变宝可梦类成员的<strong>可访问性</strong>，外部无法获取皮卡丘的所有内部信息，自然无法初始化和修改</p>
+<table>
+<thead>
+<tr>
+<th>可访问性</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public</td>
+<td>访问不受限制</td>
+</tr>
+<tr>
+<td>private</td>
+<td>访问仅限于包含该成员类型</td>
+</tr>
+<tr>
+<td>protected</td>
+<td>访问仅限于包含该成员类或从包含该成员类所派生类型</td>
+</tr>
+<tr>
+<td>internal</td>
+<td>访问仅限于当前程序集</td>
+</tr>
+</tbody></table>
+<p>我们尝试把 所有的属性值都改为 <code>public</code>，然后赋值使用</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Pokemon pikachu = <span class="keyword">new</span> Pokemon();</span><br><span class="line">    pikachu.Name = <span class="string">&quot;皮卡丘&quot;</span>;</span><br><span class="line">    pikachu.Sound = <span class="string">&quot;歪比巴卜&quot;</span>;</span><br><span class="line">    pikachu.Color = ConsoleColor.Yellow;</span><br><span class="line">    pikachu.Call();</span><br><span class="line">    Console.ReadKey();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>写了这么半天，一定有人会说：一个一个赋值，这不还是很麻烦吗</p>
+<p>没完事呢，下一步我们开始封装   </p>
+<h5 id="1-构造函数"><a href="#1-构造函数" class="headerlink" title="1.构造函数"></a>1.构造函数</h5><p>不是数学上的构造函数，<br>C# 中，构造函数是初始化一个对象时自动调用的一个函数。调用时，他为对象中的各种成员分配内存，并进行初始化。他通常和 new 语句一起出现。</p>
+<p>当我们在使用 <code>Pokemon pikachu = new Pokemon();</code> 的时候，其实是在调用 Pokemon 类的一个无参构造函数。</p>
+<p>为了方便，我们通常可以手动实现这个函数，并且把他更改为有参构造，上述代码会简便很多。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Pokemon</span>(<span class="params"><span class="built_in">string</span> name, <span class="built_in">double</span> height, <span class="built_in">double</span> weight, ConsoleColor color, <span class="built_in">string</span> sound</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Name = name;</span><br><span class="line">    Height = height;</span><br><span class="line">    Weight = weight;</span><br><span class="line">    Color = color;</span><br><span class="line">    Sound = sound;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们返回主函数，可以看到 主函数中的初始化 Pokemon 失效了。因为无参构造已经被覆盖掉了。我们更换为我们需要的有参构造。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Pokemon pikachu = <span class="keyword">new</span> Pokemon(<span class="string">&quot;皮卡丘&quot;</span>, <span class="number">0.4</span>, <span class="number">6.0</span>, ConsoleColor.Yellow, <span class="string">&quot;皮卡皮卡&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>我们运行代码，程序输出了我们想要的结果。</p>
+<h5 id="2-属性的封装"><a href="#2-属性的封装" class="headerlink" title="2. 属性的封装"></a>2. 属性的封装</h5><p>很多时候，我们并不希望成员变量是可以被对象外部任意修改的，这样会破坏掉程序的封装性。</p>
+<p>我们可以使用 属性 来封装每个成员变量</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="built_in">string</span> name;    <span class="comment">// 注意，这里的可访问性变成了私有，同时改为小驼峰</span></span><br><span class="line"><span class="keyword">public</span> <span class="built_in">string</span> Name      <span class="comment">// 这个属性采用了大驼峰</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">get</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">set</span></span><br><span class="line">    &#123;</span><br><span class="line">        name = <span class="keyword">value</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样封装以后，虽然使用方式和之前没什么不同，都可以通过<code>类名.属性名</code>的方式调用，而且看起来似乎更麻烦了，</p>
+<p>但是封装后，你可以给语句加上一些判断规则来确保数据的安全性。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="built_in">string</span> Name</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">get</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">set</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">value</span> == <span class="string">&quot;花枝丸&quot;</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;啥名都敢取？&quot;</span>);</span><br><span class="line">            name = <span class="string">&quot;Nameless&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            name = <span class="keyword">value</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>你也可以删掉 set，来确保类外只能读取变量，而不能进行任何的修改。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="built_in">string</span> Name</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">get</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><del>对于C#，其实成员变量不封装问题也不大….用起来都差不多，Java就不行了，手感全变了</del><br>贴一段 Java 的同类型代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> String name;</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> name;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String _name)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (_name.equal(<span class="string">&quot;花枝丸&quot;</span>)) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;啥名都敢取？&quot;</span>);</span><br><span class="line">        name = <span class="string">&quot;Nameless&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        name = _name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>紧紧巴巴非常难看（虽然写起来爽</p>
+<h4 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h4><p>多态是同一个行为具有多个不同表现形式或形态的能力。</p>
+<p>多态性意味着有多重形式。在面向对象编程范式中，多态性往往表现为”一个接口，多个功能”。</p>
+<p>多态性可以是静态的或动态的。在静态多态性中，函数的响应是在编译时发生的。在动态多态性中，函数的响应是在运行时发生的。</p>
+<h5 id="1-静态多态性"><a href="#1-静态多态性" class="headerlink" title="1. 静态多态性"></a>1. 静态多态性</h5><p>静态多态性体现在 函数重载和运算符重载</p>
+<p>在本节课的一开始，我们就介绍过函数的重载。输出常用函数 <code>Console.WriteLine()</code> 就有多达18个重载，这才使得他能够输多种类型的数据。</p>
+<p>重载的实现很简单：只需要重复定义同名函数即可。</p>
+<p>您可以在同一个范围内对相同的函数名有多个定义。但是函数的定义必须彼此不同，可以是参数列表中的参数类型不同，也可以是参数个数不同。<strong>不能重载只有返回类型不同的函数声明</strong>。</p>
+<p>换句话讲，程序在被写出来后，被重载的函数只能有一个唯一确定的重载与之对应。</p>
+<p>举例子：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Call</span>(<span class="params"><span class="built_in">string</span> str</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Console.Write(Name + <span class="string">&quot;说 : &quot;</span>);</span><br><span class="line">    ConsoleColor tmp = Console.ForegroundColor;</span><br><span class="line">    Console.ForegroundColor = Color;</span><br><span class="line">    Console.WriteLine(str);</span><br><span class="line">    Console.ForegroundColor = tmp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们重载了 <code>宝可梦的叫</code> ，这样我们可以实时控制宝可梦说的话，而不用改动他本身的叫声属性了。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pikachu.Call();</span><br><span class="line">pikachu.Call(<span class="string">&quot;歪比巴卜&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>因为函数的重载可以在程序编译期间就被识别，所以这种多态性叫做静态多态性。</p>
+<blockquote>
+<p>Tips:<br>构造函数也可以被重载</p>
+</blockquote>
+<p>运算符重载比较类似，暂时用不到，懒得讲了。</p>
+<h5 id="2-动态多态性"><a href="#2-动态多态性" class="headerlink" title="2. 动态多态性"></a>2. 动态多态性</h5><p>这一块，放在下面的继承后面讲解</p>
+<h4 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h4><p>啊！野生的宝可梦出现了！</p>
+<p>野生的宝可梦和我们平时的宝可梦虽然都是宝可梦，但是野生宝可梦<strong>会逃跑</strong>！这可怎么办呢？我们不能在原有的宝可梦类里加上<em>逃跑</em>相关函数，因为他们不会逃跑。<del>（宝可梦Let’s Go 里的野生不会攻击）</del></p>
+<p>这时需要引入继承功能</p>
+<p>继承是面向对象程序设计中最重要的概念之一。继承允许我们根据一个类来定义另一个类，这使得创建和维护应用程序变得更容易。同时也有利于重用代码和节省开发时间。</p>
+<p>继承是一种 <em>is-a</em> 的关系，他允许我们定义一个类的 <strong>子集</strong> ，这两个类我们称为 <strong>父类</strong> 和 <strong>子类</strong></p>
+<p>我们 新建一个 <code>WildPokemon</code> 类，继承 <code>Pokemon</code> 来补充实现 逃跑函数</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">CS_ConsoleApp</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">class</span> <span class="title">WildPokemon</span> : <span class="title">Pokemon</span></span><br><span class="line">	&#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>写完，程序报出了一个严重错误。（通常不会这样）</p>
+<p>因为我们目前的野生宝可梦类是无法使用的，原因在于无法被实例化。</p>
+<p>因为 实例化一个类，必须实现他的构造函数。子类在构造时，会优先使用他父类的构造函数，再使用自己的。而我们没有声明子类构造使用什么构造函数，他默认使用无参构造。致命的是：父类 <strong>没有无参构造函数</strong> 。</p>
+<p>我们使用VS的自动补全后，程序长这样：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">CS_ConsoleApp</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">class</span> <span class="title">WildPokemon</span> : <span class="title">Pokemon</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="title">WildPokemon</span>(<span class="params"><span class="built_in">string</span> name, <span class="built_in">double</span> height, <span class="built_in">double</span> weight, ConsoleColor color, <span class="built_in">string</span> sound</span>) </span></span><br><span class="line"><span class="function">			: <span class="title">base</span>(<span class="params">name, height, weight, color, sound</span>)</span></span><br><span class="line"><span class="function"></span>		&#123;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里，我们用 <code>:base()</code> 的形式，使子类实现父类的构造函数，这样我们就可以实现只通过有参构造来实例化子类了。</p>
+<p>这样我们就可以和原来一样，初始化一个野生宝可梦了</p>
+<p>添加逃跑相关代码：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Escape</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ConsoleColor tmp = Console.ForegroundColor;</span><br><span class="line">    Console.ForegroundColor = ConsoleColor.DarkGray;</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;野生的&quot;</span> + Name + <span class="string">&quot;逃跑了&quot;</span>);</span><br><span class="line">    Console.ForegroundColor = tmp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>逃跑功能做好了，但是我们想完善一下野生宝可梦的叫声函数，我们希望野生的宝可梦的叫声也带上 <code>野生的</code>。<br>我们可以使用 <strong>重写</strong> 特性来完成</p>
+<p>当需要重新实现父类的同名方法时，可以使用方法重写，我们使用 <code>new</code> 关键字</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">new</span> <span class="keyword">void</span> <span class="title">Call</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Console.Write(<span class="string">&quot;野生的&quot;</span> + Name + <span class="string">&quot;说 : &quot;</span>);</span><br><span class="line">    ConsoleColor tmp = Console.ForegroundColor;</span><br><span class="line">    Console.ForegroundColor = Color;</span><br><span class="line">    Console.WriteLine(Sound);</span><br><span class="line">    Console.ForegroundColor = tmp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>他会覆盖掉他对应的函数，但是不会覆盖掉所有的重载。有参数的叫声依然可以使用</p>
+<h5 id="关于继承的动态多态性"><a href="#关于继承的动态多态性" class="headerlink" title="关于继承的动态多态性"></a>关于继承的动态多态性</h5><p>如果一个类，只被用来继承，而没有被实例化的必要，那我们通常将他作为一个抽象类(<code>abstract</code>)</p>
+<p>抽象类不能被实例化，只能够被继承。抽象类的抽象方法<strong>必须</strong>被子类实现。</p>
+<p>举一个很生动的例子，你可以说 “猫是生物”，每一只猫都是生物，你可以 “养一只猫”，但是你不能 “养一只生物”，这听起来十分奇怪。<br>可以说 “生物” 就是一个抽象类，因为他没有对应的实例，但是却有很多实例都<strong>是他</strong></p>
+<p>依据这个特性，我们不妨把 <strong>宝可梦召唤师</strong> 也扔进这个项目中</p>
+<p>召唤师有：</p>
+<ul>
+<li>姓名</li>
+<li>性别</li>
+</ul>
+<p>宝可梦召唤师 和 宝可梦 都是生物，所以我们先构建一个抽象类 <strong>生物</strong>，再构建一个  <strong>召唤师</strong> </p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">CS_ConsoleApp</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">Creature</span></span><br><span class="line">	&#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">CS_ConsoleApp</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">class</span> <span class="title">Trainer</span> : <span class="title">Creature</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">private</span> <span class="built_in">string</span> name;</span><br><span class="line">		<span class="keyword">private</span> <span class="built_in">bool</span> gender; <span class="comment">// false 男</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span> =&gt; name; <span class="keyword">set</span> =&gt; name = <span class="keyword">value</span>; &#125;</span><br><span class="line">		<span class="keyword">public</span> <span class="built_in">bool</span> Gender &#123; <span class="keyword">get</span> =&gt; gender; <span class="keyword">set</span> =&gt; gender = <span class="keyword">value</span>; &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后我们再让 <strong>宝可梦</strong> 和 <strong>召唤师</strong> 继承这个 <strong>抽象类</strong></p>
+<p>这时候，我们就可以在主函数里，使用 Creature 类来接收实例化的 <strong>宝可梦</strong> 了</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Creature eevee = <span class="keyword">new</span> Pokemon(<span class="string">&quot;伊布&quot;</span>, <span class="number">0.3</span>, <span class="number">6.5</span>, ConsoleColor.DarkYellow, <span class="string">&quot;Miya!&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>准备工作完成了，如何体现我们的动态多态性呢？</p>
+<p>我们为所有的 <strong>生物</strong> 实现一个方法：<code>什么也不做</code></p>
+<p>我们在 生物类 里 定义一个抽象方法 <code>DoNothing()</code></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">DoNothing</span>(<span class="params"></span>)</span>;</span><br></pre></td></tr></table></figure>
+<p>我们可以马上看到，宝可梦类 和 召唤师类 都出了错误。因为，<strong>虚基类的虚函数 在子类中 必须得到实现</strong>。</p>
+<p>我们尝试在两种子类中进行不同的实现：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Trainer 类</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">DoNothing</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ConsoleColor tmp = Console.ForegroundColor;</span><br><span class="line">    Console.ForegroundColor = ConsoleColor.DarkGray;</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;召唤师&quot;</span> + Name + <span class="string">&quot;什么都没做&quot;</span>);</span><br><span class="line">    Console.ForegroundColor = tmp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Pokemon 类</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">DoNothing</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ConsoleColor tmp = Console.ForegroundColor;</span><br><span class="line">    Console.ForegroundColor = ConsoleColor.DarkGray;</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;宝可梦&quot;</span> + Name + <span class="string">&quot;什么都没做&quot;</span>);</span><br><span class="line">    Console.ForegroundColor = tmp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们在主函数中分别用 Creature 接收 宝可梦类 和 召唤师类，会得到不同的函数调用结果，这里就不再做演示了。</p>
+<p>希望大家能够准确的理解 <strong>继承，多态</strong> 这两个较难的概念，在后续的学习中，我们会学到 <strong>接口，泛型</strong> 等等与之相关的概念，很容易与之混淆。</p>
+<hr>
+<h2 id="彩蛋"><a href="#彩蛋" class="headerlink" title="彩蛋"></a>彩蛋</h2><p>如何把穹妹塞进咱们的VS里?</p>
+<ul>
+<li>下载插件 ClaudiaIDE    </li>
+</ul>
+<p><img data-src="https://img-blog.csdn.net/20180410204003474?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTY2MDE2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="司马图床"></p>
+<ul>
+<li>安装完成我们可以在【工具】=&gt;【选项】=&gt;【ClaudiaIDE】中自定义修改背景图片路径</li>
+</ul>
+<p><img data-src="https://img-blog.csdn.net/20180410204712153?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTY2MDE2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="图片裂开了"></p>
+<ul>
+<li>剩下的自己调吧…</li>
+</ul>
+<hr>
+<h2 id="完结撒花"><a href="#完结撒花" class="headerlink" title="完结撒花!!!"></a>完结撒花!!!</h2>
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="Hanamaru🍥Yabuki 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="Hanamaru🍥Yabuki 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C#</a>
+              <a href="/tags/%E6%8E%88%E8%AF%BE/" rel="tag"><i class="fa fa-tag"></i> 授课</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/10/27/%E5%8D%97%E9%82%AE%E6%A0%A1%E7%A7%91%E5%8D%8F-C-%E7%BB%84%E6%8E%88%E8%AF%BE-1/" rel="prev" title="南邮校科协-C#组授课(1)">
+      <i class="fa fa-chevron-left"></i> 南邮校科协-C#组授课(1)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/11/10/%E5%8D%97%E9%82%AE%E6%A0%A1%E7%A7%91%E5%8D%8F-C-%E7%BB%84%E6%8E%88%E8%AF%BE-3/" rel="next" title="南邮校科协-C#组授课(3)">
+      南邮校科协-C#组授课(3) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E8%AF%BE-C-%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.</span> <span class="nav-text">第二课 - C#的面向对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A9%E6%88%91%E4%BB%AC%E9%87%8D%E6%96%B0%E5%AE%A1%E8%A7%86%E4%B8%80%E4%B8%8B%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84-HelloWorld-%E5%B7%A5%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">让我们重新审视一下最简单的 HelloWorld 工程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%95%B0%E7%BB%84"><span class="nav-number">1.2.</span> <span class="nav-text">1. 数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E6%95%B0%E7%BB%84"><span class="nav-number">1.2.1.</span> <span class="nav-text">初始化数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B5%8B%E5%80%BC%E7%BB%99%E6%95%B0%E7%BB%84"><span class="nav-number">1.2.2.</span> <span class="nav-text">赋值给数组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">1.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">2.</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BF%E9%97%AE%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number">1.2.3.</span> <span class="nav-text">访问数组元素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E8%AE%BF%E9%97%AE"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">随机访问</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-forEach-%E9%81%8D%E5%8E%86"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">使用 forEach 遍历</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%A9%E5%B1%95%EF%BC%9A%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84-%E5%92%8C-%E4%BA%A4%E9%94%99%E6%95%B0%E7%BB%84"><span class="nav-number">1.2.4.</span> <span class="nav-text">扩展：多维数组 和 交错数组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">多维数组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%A4%E9%94%99%E6%95%B0%E7%BB%84"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">交错数组</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%96%B9%E6%B3%95-%E5%87%BD%E6%95%B0"><span class="nav-number">1.3.</span> <span class="nav-text">2. 方法&#x2F;函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%80%BC%E4%BC%A0%E9%80%92-%E5%92%8C-%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92"><span class="nav-number">1.3.1.</span> <span class="nav-text">值传递 和 引用传递</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E7%B1%BB-%E5%92%8C-%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.4.</span> <span class="nav-text">3. 类 和 对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%9F%BA%E6%9C%AC%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">1.4.1.</span> <span class="nav-text">最基本的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E6%9E%90%E7%B1%BB%E7%9A%84%E6%88%90%E5%91%98"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">分析类的成员</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">基本代码实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7%EF%BC%9A%E5%B0%81%E8%A3%85%EF%BC%8C%E7%BB%A7%E6%89%BF%EF%BC%8C%E5%A4%9A%E6%80%81"><span class="nav-number">1.4.2.</span> <span class="nav-text">面向对象三大特性：封装，继承，多态</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%81%E8%A3%85"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">封装</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="nav-number">1.4.2.1.1.</span> <span class="nav-text">1.构造函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E5%B1%9E%E6%80%A7%E7%9A%84%E5%B0%81%E8%A3%85"><span class="nav-number">1.4.2.1.2.</span> <span class="nav-text">2. 属性的封装</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E6%80%81"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">多态</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E9%9D%99%E6%80%81%E5%A4%9A%E6%80%81%E6%80%A7"><span class="nav-number">1.4.2.2.1.</span> <span class="nav-text">1. 静态多态性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E5%8A%A8%E6%80%81%E5%A4%9A%E6%80%81%E6%80%A7"><span class="nav-number">1.4.2.2.2.</span> <span class="nav-text">2. 动态多态性</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF"><span class="nav-number">1.4.2.3.</span> <span class="nav-text">继承</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E7%BB%A7%E6%89%BF%E7%9A%84%E5%8A%A8%E6%80%81%E5%A4%9A%E6%80%81%E6%80%A7"><span class="nav-number">1.4.2.3.1.</span> <span class="nav-text">关于继承的动态多态性</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BD%A9%E8%9B%8B"><span class="nav-number">1.5.</span> <span class="nav-text">彩蛋</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%8C%E7%BB%93%E6%92%92%E8%8A%B1"><span class="nav-number">1.6.</span> <span class="nav-text">完结撒花!!!</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hanamaru🍥Yabuki"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Hanamaru🍥Yabuki</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/HanaYabuki" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;HanaYabuki" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/496956009" title="Bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;496956009" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>Bilibili</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hanamaru🍥Yabuki</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":240,"display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="南邮校科协 C#组 最后一次 C#基础课.🏆 本节课讲的都是边边角角的修补工作 (也很重要!) .">
+<meta property="og:type" content="article">
+<meta property="og:title" content="南邮校科协-C#组授课(4)">
+<meta property="og:url" content="http://example.com/2020/11/24/%E5%8D%97%E9%82%AE%E6%A0%A1%E7%A7%91%E5%8D%8F-C-%E7%BB%84%E6%8E%88%E8%AF%BE-4/index.html">
+<meta property="og:site_name" content="花枝丸🍥的博客">
+<meta property="og:description" content="南邮校科协 C#组 最后一次 C#基础课.🏆 本节课讲的都是边边角角的修补工作 (也很重要!) .">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-11-24T13:53:28.000Z">
+<meta property="article:modified_time" content="2020-11-30T13:59:34.333Z">
+<meta property="article:author" content="Hanamaru🍥Yabuki">
+<meta property="article:tag" content="C#">
+<meta property="article:tag" content="授课">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2020/11/24/%E5%8D%97%E9%82%AE%E6%A0%A1%E7%A7%91%E5%8D%8F-C-%E7%BB%84%E6%8E%88%E8%AF%BE-4/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>南邮校科协-C#组授课(4) | 花枝丸🍥的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">花枝丸🍥的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录自己作为CS学生的点滴</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">5</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">3</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">8</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/HanaYabuki" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/24/%E5%8D%97%E9%82%AE%E6%A0%A1%E7%A7%91%E5%8D%8F-C-%E7%BB%84%E6%8E%88%E8%AF%BE-4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hanamaru🍥Yabuki">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="花枝丸🍥的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          南邮校科协-C#组授课(4)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-24 21:53:28" itemprop="dateCreated datePublished" datetime="2020-11-24T21:53:28+08:00">2020-11-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-30 21:59:34" itemprop="dateModified" datetime="2020-11-30T21:59:34+08:00">2020-11-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8E%88%E8%AF%BE/" itemprop="url" rel="index"><span itemprop="name">授课</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>南邮校科协 C#组 最后一次 C#基础课.<br>🏆 本节课讲的都是边边角角的修补工作 (也很重要!) .</p>
+<a id="more"></a>
+
+<hr>
+<h1 id="C-组最后一次授课"><a href="#C-组最后一次授课" class="headerlink" title="C#组最后一次授课"></a>C#组最后一次授课</h1><p>以后都是Unity组了，拜拜了大家。</p>
+<h2 id="〇、历史遗留问题"><a href="#〇、历史遗留问题" class="headerlink" title="〇、历史遗留问题"></a>〇、历史遗留问题</h2><p>这可能是最重要的一块。</p>
+<h3 id="1-理解内存，理解引用传参"><a href="#1-理解内存，理解引用传参" class="headerlink" title="1. 理解内存，理解引用传参"></a>1. 理解内存，理解引用传参</h3><ol>
+<li>内存是一块一块并连续的。</li>
+<li>变量存储在内存中。</li>
+<li>引用传参传递的是该变量在内存中的位置（地址）</li>
+<li><code>ref</code> 传参会同时传递变量本身的值过去，而 <code>out</code> 传参会把传过的参数当作一个新声明的变量处理</li>
+</ol>
+<h3 id="2-重新认识引用类型"><a href="#2-重新认识引用类型" class="headerlink" title="2. 重新认识引用类型"></a>2. 重新认识引用类型</h3><p>引用类型其实是一个很有趣的概念。</p>
+<ol>
+<li>当我们声明一个引用类型变量时，我们会开辟一小块儿类似值类型的内存空间（可以理解为一个数字类型），这份空间会在该引用类型变量被赋值是使用。</li>
+<li>当我们使用 <code>new</code> 语句，实例化一个对象时，我们会在内存中开辟一大块儿空间，，他包含所有的本对象需要的所有内存空间，其中，未被赋值的成员会被赋为初始值。</li>
+<li>当我们用一个对象给引用类型变量赋值时，引用类型获得的实际值是这个对象对应的内存位置。</li>
+<li>当一个对象不被任何引用类型变量引用时，这个对象会被GC回收。</li>
+</ol>
+<p>学到这里已经可以满足很多程序理解层面上的需求了。有兴趣的同学可以深入学习一下C#的内存堆栈模型。</p>
+<h3 id="3-结构体"><a href="#3-结构体" class="headerlink" title="3. 结构体"></a>3. 结构体</h3><p>结构体和类很相似，是允许我们自行定义一种<strong>值类型</strong>（而非引用类型）的一种方式</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> Point</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">double</span> x;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">double</span> y;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="built_in">string</span> <span class="title">ToString</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">$&quot;(<span class="subst">&#123;x&#125;</span>,<span class="subst">&#123;y&#125;</span>)&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：</p>
+<ol>
+<li>结构体是值类型。所以当结构体被声明时即占用内存空间，且不被初始化。</li>
+<li>结构体无继承，但是可以实现接口</li>
+</ol>
+<hr>
+<h2 id="一、拆箱和装箱"><a href="#一、拆箱和装箱" class="headerlink" title="一、拆箱和装箱"></a>一、拆箱和装箱</h2><p>这个简单！</p>
+<p>我们都知道，<code>Object</code>是所有对象的父类。但是我们不知道，其实<code>Object</code>对象中也可以存储一个值类型。</p>
+<ul>
+<li><strong>装箱</strong> 就是把 <em>值类型</em> 转换成 <em>引用类型</em></li>
+<li><strong>拆箱</strong> 就是把 <em>引用类型</em> 转换成 <em>值类型</em></li>
+</ul>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">CS_ConsoleApp</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>		&#123;</span><br><span class="line">			<span class="built_in">object</span> number = <span class="number">1</span>;</span><br><span class="line">			Console.WriteLine(number);</span><br><span class="line">			Console.ReadKey();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这是合法的。而且，C# 的机制允许程序自动执行拆装箱工作</p>
+<p>我们来看一个拆装箱的例子：</p>
+<p><del>我们上节课提及过 数据容器。细心的同学一定尝试过了！！对吧对吧（呜呜呜</del></p>
+<p>我们尝试写一个不定长数组 list</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">CS_ConsoleApp</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>		&#123;</span><br><span class="line">			List&lt;<span class="built_in">int</span>&gt; tmpList = <span class="keyword">new</span> List&lt;<span class="built_in">int</span>&gt;();</span><br><span class="line">			<span class="keyword">for</span>(<span class="built_in">int</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;++i)</span><br><span class="line">			&#123;</span><br><span class="line">				tmpList.Add(i);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">foreach</span> (<span class="built_in">int</span> i <span class="keyword">in</span> tmpList)</span><br><span class="line">			&#123;</span><br><span class="line">				Console.WriteLine(i);</span><br><span class="line">			&#125;</span><br><span class="line">			Console.ReadKey();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们简单声明了一个泛型数组并填入了值并成功输出。</p>
+<p>我们接下来做另一个实验：我们尝试使用 ArrayList。（<code>using System.Collections;</code>）</p>
+<p>ArrayList 可以存储所有的类型，它不是一个泛型类。它内部存储元素的类型是 <code>Object</code></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 需添加</span></span><br><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">CS_ConsoleApp</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>		&#123;</span><br><span class="line">			ArrayList arrayList = <span class="keyword">new</span> ArrayList();</span><br><span class="line">			arrayList.Add(<span class="string">&quot;Hello World&quot;</span>);</span><br><span class="line">			arrayList.Add(<span class="number">114.514</span>);</span><br><span class="line">			arrayList.Add(ConsoleColor.Black);</span><br><span class="line">			<span class="keyword">foreach</span>(Object o <span class="keyword">in</span> arrayList)</span><br><span class="line">			&#123;</span><br><span class="line">				Console.WriteLine(o);</span><br><span class="line">			&#125;</span><br><span class="line">			Console.ReadKey();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里，细心的同学一定叒问了：啊？！ 你怎么把 <code>int</code> 塞进了 <code>Object</code> 里？！</p>
+<p>其实，这里就实现了 C# 的自动装箱特性，自动将值类型转换成相应的引用类型存入 <code>Object</code>。</p>
+<p>要知道，由于值类型和引用类型内存存储位置差异很大，所以自动拆装箱是消耗性能的。为了降低性能的无谓损耗，请避免大量的拆装箱行为。（不用引用类型的空间存储值类型）</p>
+<hr>
+<h2 id="二、泛型（Generic）"><a href="#二、泛型（Generic）" class="headerlink" title="二、泛型（Generic）"></a>二、泛型（Generic）</h2><p>泛型（Generic） 允许我们延迟编写类或方法中的编程元素的数据类型的规范，直到实际在程序中使用它的时候。换句话说，泛型允许您编写一个可以与任何数据类型一起工作的类或方法。</p>
+<p>泛型也是动态多态性的很好体现。并且，正如上面所见，适当使用泛型可以避免拆装箱。</p>
+<p>泛型最常见的声明方式如下 （主要在那个 <code>&lt;T&gt;</code></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MyGenericClass</span> &lt;<span class="title">T</span>&gt;</span><br><span class="line">&#123;</span><br><span class="line">    xxx</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样声明一个类以后，便可以用 <code>T</code> 来代替该类内的一个数据类型名字使用了。这样做以后，我们在实例化该类时，可以填充 <code>T</code> 的值来临时定义。</p>
+<p>下面我们使用泛型编写一个数据容器来尝试泛型的功能。以泛型栈为例</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">HanaStack</span> &lt;<span class="title">T</span>&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 数组实现栈</span></span><br><span class="line">    <span class="keyword">private</span> T[] Ts;</span><br><span class="line">    <span class="built_in">int</span> pos;</span><br><span class="line">    <span class="built_in">int</span> maxSize;</span><br><span class="line">    <span class="comment">// 构造函数</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">HanaStack</span>(<span class="params"><span class="built_in">int</span> maxSize = <span class="number">256</span></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">this</span>.maxSize = maxSize;</span><br><span class="line">        pos = <span class="number">0</span>;</span><br><span class="line">        Ts = <span class="keyword">new</span> T[maxSize];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 判空</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="built_in">bool</span> <span class="title">empty</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">return</span> pos &lt;= <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 当前栈大小</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="built_in">int</span> <span class="title">Size</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">return</span> pos;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 栈顶元素</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">Top</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">return</span> pos &gt; <span class="number">0</span> ? Ts[pos<span class="number">-1</span>] : <span class="literal">default</span>(T);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 入栈</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Push</span>(<span class="params">T t</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">if</span>(pos &gt;= maxSize)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Ts[pos] = t;</span><br><span class="line">        ++pos;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 出栈</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Pop</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">if</span> (pos &lt;= <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        --pos;</span><br><span class="line">        Ts[pos] = <span class="literal">default</span>(T);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样，我们就利用了泛型封装好了一个栈结构。他可以像C++栈一样正常使用。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        HanaStack&lt;<span class="built_in">int</span>&gt; hanaStack = <span class="keyword">new</span> HanaStack&lt;<span class="built_in">int</span>&gt;();</span><br><span class="line">        hanaStack.Push(<span class="number">1</span>);</span><br><span class="line">        hanaStack.Push(<span class="number">2</span>);</span><br><span class="line">        hanaStack.Push(<span class="number">3</span>);</span><br><span class="line">        <span class="keyword">while</span> (!hanaStack.empty()) </span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(hanaStack.Top());</span><br><span class="line">            hanaStack.Pop();</span><br><span class="line">        &#125;</span><br><span class="line">        Console.ReadKey();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>甚至可以更离谱一点</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        HanaStack&lt;Object&gt; hanaStack = <span class="keyword">new</span> HanaStack&lt;Object&gt;();</span><br><span class="line">        hanaStack.Push(<span class="number">114514</span>);</span><br><span class="line">        hanaStack.Push(ConsoleColor.Black);</span><br><span class="line">        hanaStack.Push(DateTime.Now);</span><br><span class="line">        <span class="keyword">while</span> (!hanaStack.empty()) </span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(hanaStack.Top());</span><br><span class="line">            hanaStack.Pop();</span><br><span class="line">        &#125;</span><br><span class="line">        Console.ReadKey();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>（注意这种使用方法包含拆装箱，当然是不好的）</p>
+<p>泛型是很常用的编程设计方案，一定要掌握。（在C++中，也有类似的<em>模版</em>这一概念）</p>
+<blockquote>
+<p>有趣的是，C# 的泛型设计很棒。C#的泛型是真泛型，使用 <em>反射代码</em> 可以检测出。而Java中也有泛型的概念，不过它是伪泛型，在编译期就被静态处理掉了。Java中，可以利用反射在泛型数据容器里存储乱七八糟的东西而引发极大的混乱。</p>
+</blockquote>
+<hr>
+<h2 id="三、异常处理-Exception"><a href="#三、异常处理-Exception" class="headerlink" title="三、异常处理 Exception"></a>三、异常处理 Exception</h2><p>异常我居然没有讲！！！（其实是因为 C# 的静态检查机制完善，许多异常在编译器里就跑不过，异常非常难以触发。）</p>
+<p>异常是在程序执行期间出现的问题。C# 中的异常是对程序运行时出现的特殊情况的一种响应。</p>
+<p>异常处理 提供了一种把程序控制权从某个部分转移到另一个部分的方式。C# 异常处理时建立在四个关键词之上的：<code>try</code>、<code>catch</code>、<code>finally</code> 和 <code>throw</code>。</p>
+<h3 id="简单情况"><a href="#简单情况" class="headerlink" title="简单情况"></a>简单情况</h3><p>我们尝试触发一个异常：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">CS_ConsoleApp</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>		&#123;</span><br><span class="line">			<span class="built_in">int</span> a = <span class="number">0</span>;</span><br><span class="line">			<span class="built_in">int</span> b = <span class="number">114514</span>;</span><br><span class="line">			Console.WriteLine(b/a);</span><br><span class="line">			Console.ReadKey();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>它啪一下就报错了很快啊！我们查看错误信息：</p>
+<blockquote>
+<p>System.DivideByZeroException:“尝试除以零。”</p>
+</blockquote>
+<p>简单明了，除以零就暴毙。</p>
+<p>在生产环境中，我们肯定不能轻易让这种令人窒息的东西出现在用户界面的，所以我们需要捕获异常。</p>
+<ul>
+<li>try 尝试执行本语句块并等待捕获异常</li>
+<li>catch 捕获 try块 出现的异常，并执行自身，结束后跳出</li>
+<li>finally 结束后执行</li>
+</ul>
+<p>举例子！</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">CS_ConsoleApp</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>		&#123;</span><br><span class="line">			<span class="built_in">int</span> a = <span class="number">0</span>;</span><br><span class="line">			<span class="built_in">int</span> b = <span class="number">114514</span>;</span><br><span class="line">			<span class="built_in">double</span> ans = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">try</span></span><br><span class="line">			&#123;</span><br><span class="line">				ans = b / a;</span><br><span class="line">			&#125;</span><br><span class="line">			catch</span><br><span class="line">			&#123;</span><br><span class="line">				Console.WriteLine(<span class="string">&quot;艹!&quot;</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">finally</span></span><br><span class="line">			&#123;</span><br><span class="line">				Console.WriteLine(ans);</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			Console.ReadKey();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>当出现了异常之时，程序没有宕机，而是执行了catch块儿内的语句。</p>
+<p>当我们把 <code>a</code> 的值改为1，程序正常运行，并且顺延执行了 <code>finally</code> 块儿内的内容。</p>
+<h3 id="按类型捕获"><a href="#按类型捕获" class="headerlink" title="按类型捕获"></a>按类型捕获</h3><p>catch 块也可以按照类型捕获异常，我们更改 catch 的写法：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">catch (System.DivideByZeroException e)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>catch 也可以并列写很多种类型，异常会按顺序捕获。当捕获到相应异常并结束本块儿后，不会继续捕获后续异常。</p>
+<h3 id="高级用法"><a href="#高级用法" class="headerlink" title="高级用法"></a>高级用法</h3><h4 id="1-我们可以手动抛出一个异常。"><a href="#1-我们可以手动抛出一个异常。" class="headerlink" title="1. 我们可以手动抛出一个异常。"></a>1. 我们可以手动抛出一个异常。</h4><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Fuck</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> System.Exception(<span class="string">&quot;Fuck!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>异常类型是为编程人员服务的，所以，虽然异常无视类型可以胡乱抛出，但请按照逻辑思维的习惯，合理地使用异常功能。</p>
+</blockquote>
+<h4 id="2-我们也可以自定义异常种类。"><a href="#2-我们也可以自定义异常种类。" class="headerlink" title="2. 我们也可以自定义异常种类。"></a>2. 我们也可以自定义异常种类。</h4><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">CS_ConsoleApp</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">class</span> <span class="title">FuckingException</span> : <span class="title">System.Exception</span></span><br><span class="line">	&#123;</span><br><span class="line">		FuckingException() : <span class="keyword">base</span>(<span class="string">&quot;Fuck!&quot;</span>) &#123; &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>自行理解体会。（</p>
+<blockquote>
+<p>异常处理是面向切面编程思想（一种更先进的编程思想）的一种很好体现。有兴趣的同学可以自行了解查询。</p>
+</blockquote>
+<hr>
+<h2 id="四、了解-垃圾回收-Garbage-Collector"><a href="#四、了解-垃圾回收-Garbage-Collector" class="headerlink" title="四、了解 垃圾回收 Garbage Collector"></a>四、了解 垃圾回收 Garbage Collector</h2><p><del>了解嘛，就是让你了解了解，我不讲</del></p>
+<p>写过C++的人都知道，C++是需要手动释放内存的。因为C++的类一旦被实例化，就会一直存在在系统内存中。而C#是比C++更高级的语言（真的），C# 提供了一套CG机制，可以自动回收用不到的实例。</p>
+<p>大家只需要初步了解，如果一个对象被丢弃了，再也不被任何东西引用了，它将会被GC机制回收。</p>
+<blockquote>
+<p>这个东西非常不直观，大家听听就好。</p>
+</blockquote>
+<hr>
+<h2 id="五、了解-多线程"><a href="#五、了解-多线程" class="headerlink" title="五、了解 多线程"></a>五、了解 多线程</h2><p><del>嗯嗯，了解即可，不讲</del></p>
+<p><em>线程</em> 被定义为程序的执行路径。每个线程都定义了一个独特的控制流。如果您的应用程序涉及到复杂的和耗时的操作，那么设置不同的线程执行路径往往是有益的，每个线程执行特定的工作。</p>
+<p>线程是轻量级进程。一个使用线程的常见实例是现代操作系统中并行编程的实现。使用线程节省了 CPU 周期的浪费，同时提高了应用程序的效率。</p>
+<p>到目前为止我们编写的程序是一个单线程作为应用程序的运行实例的单一的过程运行的。但是，这样子应用程序同时只能执行一个任务。为了同时执行多个任务，它可以被划分为更小的线程。</p>
+<blockquote>
+<p>注意：使用线程类需要 <code>using System.Threading;</code></p>
+</blockquote>
+<h3 id="线程生命周期"><a href="#线程生命周期" class="headerlink" title="线程生命周期"></a>线程生命周期</h3><p>线程生命周期开始于 <code>System.Threading.Thread</code> 类的对象被创建时，结束于线程被终止或完成执行时。</p>
+<p>下面列出了线程生命周期中的各种状态：</p>
+<ul>
+<li>未启动状态：当线程实例被创建但 Start 方法未被调用时的状况。</li>
+<li>就绪状态：当线程准备好运行并等待 CPU 周期时的状况。</li>
+<li>不可运行状态：下面的几种情况下线程是不可运行的：<ul>
+<li>已经调用 Sleep 方法</li>
+<li>已经调用 Wait 方法</li>
+<li>通过 I/O 操作阻塞</li>
+</ul>
+</li>
+<li>死亡状态：当线程已完成执行或已中止时的状况。</li>
+</ul>
+<h3 id="主线程"><a href="#主线程" class="headerlink" title="主线程"></a>主线程</h3><p>在 C# 中，System.Threading.Thread 类用于线程的工作。它允许创建并访问多线程应用程序中的单个线程。进程中第一个被执行的线程称为主线程。</p>
+<p>当 C# 程序开始执行时，主线程自动创建。使用 Thread 类创建的线程被主线程的子线程调用。您可以使用 Thread 类的 CurrentThread 属性访问线程。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Threading;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">CS_ConsoleApp</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>		&#123;</span><br><span class="line">			Thread thread = Thread.CurrentThread;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建线程"><a href="#创建线程" class="headerlink" title="创建线程"></a>创建线程</h3><p>线程是通过扩展 Thread 类创建的（参数为函数名称）。扩展的 Thread 类调用 Start() 方法来开始子线程的执行。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Threading;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">CS_ConsoleApp</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Hello</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>		&#123;</span><br><span class="line">			Console.WriteLine(<span class="string">&quot;Hello Thread.&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>		&#123;</span><br><span class="line">			Thread thread = <span class="keyword">new</span> Thread(Hello);</span><br><span class="line">			Console.WriteLine(<span class="string">&quot;Hello World&quot;</span>);</span><br><span class="line">			thread.Start();</span><br><span class="line">			Console.ReadKey();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="管理线程"><a href="#管理线程" class="headerlink" title="管理线程"></a>管理线程</h3><p>Thread 类提供了各种管理线程的方法。</p>
+<p>下面的实例演示了 sleep() 方法的使用，用于在一个特定的时间暂停线程。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Threading;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">CS_ConsoleApp</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Hello</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>		&#123;</span><br><span class="line">			Thread.Sleep(<span class="number">5000</span>);</span><br><span class="line">			Console.WriteLine(<span class="string">&quot;Hello Thread.&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>		&#123;</span><br><span class="line">			Thread thread = <span class="keyword">new</span> Thread(Hello);</span><br><span class="line">			Console.WriteLine(<span class="string">&quot;Hello World&quot;</span>);</span><br><span class="line">			thread.Start();</span><br><span class="line">			Console.ReadKey();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里有一个很有意思的现象，如果我们在 <code>Hello Thread</code>输出之前按下键盘，程序会即刻停止，而不会等待输出字符串。</p>
+<p>因为输出 <code>Hello World</code>结束后，此时主线程正在等待按下键盘后结束程序，没有等待子线程的必要。</p>
+<h3 id="销毁线程"><a href="#销毁线程" class="headerlink" title="销毁线程"></a>销毁线程</h3><p>Abort() 方法用于销毁线程。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Threading;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">CS_ConsoleApp</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Hello</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>		&#123;</span><br><span class="line">			Thread.Sleep(<span class="number">500</span>);</span><br><span class="line">			Console.WriteLine(<span class="string">&quot;Hello Thread.&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>		&#123;</span><br><span class="line">			Thread thread = <span class="keyword">new</span> Thread(Hello);</span><br><span class="line">			Console.WriteLine(<span class="string">&quot;Hello World&quot;</span>);</span><br><span class="line">			thread.Start();</span><br><span class="line">            thread.Sleep(<span class="number">50</span>);</span><br><span class="line">			thread.Abort();</span><br><span class="line">			Console.ReadKey();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>通过抛出 threadabortexception 在运行时中止线程。这个异常不能被捕获，如果有 finally 块，控制会被送至 finally 块。</p>
+</blockquote>
+<hr>
+<h1 id="真-·-完结撒花！！！"><a href="#真-·-完结撒花！！！" class="headerlink" title="真 · 完结撒花！！！"></a>真 · 完结撒花！！！</h1>
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="Hanamaru🍥Yabuki 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="Hanamaru🍥Yabuki 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C#</a>
+              <a href="/tags/%E6%8E%88%E8%AF%BE/" rel="tag"><i class="fa fa-tag"></i> 授课</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/11/10/%E5%8D%97%E9%82%AE%E6%A0%A1%E7%A7%91%E5%8D%8F-C-%E7%BB%84%E6%8E%88%E8%AF%BE-3/" rel="prev" title="南邮校科协-C#组授课(3)">
+      <i class="fa fa-chevron-left"></i> 南邮校科协-C#组授课(3)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/11/29/hello-world/" rel="next" title="Hello World">
+      Hello World <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C-%E7%BB%84%E6%9C%80%E5%90%8E%E4%B8%80%E6%AC%A1%E6%8E%88%E8%AF%BE"><span class="nav-number">1.</span> <span class="nav-text">C#组最后一次授课</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%87%E3%80%81%E5%8E%86%E5%8F%B2%E9%81%97%E7%95%99%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.</span> <span class="nav-text">〇、历史遗留问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%90%86%E8%A7%A3%E5%86%85%E5%AD%98%EF%BC%8C%E7%90%86%E8%A7%A3%E5%BC%95%E7%94%A8%E4%BC%A0%E5%8F%82"><span class="nav-number">1.1.1.</span> <span class="nav-text">1. 理解内存，理解引用传参</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E9%87%8D%E6%96%B0%E8%AE%A4%E8%AF%86%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.1.2.</span> <span class="nav-text">2. 重新认识引用类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E7%BB%93%E6%9E%84%E4%BD%93"><span class="nav-number">1.1.3.</span> <span class="nav-text">3. 结构体</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%8B%86%E7%AE%B1%E5%92%8C%E8%A3%85%E7%AE%B1"><span class="nav-number">1.2.</span> <span class="nav-text">一、拆箱和装箱</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%B3%9B%E5%9E%8B%EF%BC%88Generic%EF%BC%89"><span class="nav-number">1.3.</span> <span class="nav-text">二、泛型（Generic）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86-Exception"><span class="nav-number">1.4.</span> <span class="nav-text">三、异常处理 Exception</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E6%83%85%E5%86%B5"><span class="nav-number">1.4.1.</span> <span class="nav-text">简单情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%89%E7%B1%BB%E5%9E%8B%E6%8D%95%E8%8E%B7"><span class="nav-number">1.4.2.</span> <span class="nav-text">按类型捕获</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95"><span class="nav-number">1.4.3.</span> <span class="nav-text">高级用法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%88%91%E4%BB%AC%E5%8F%AF%E4%BB%A5%E6%89%8B%E5%8A%A8%E6%8A%9B%E5%87%BA%E4%B8%80%E4%B8%AA%E5%BC%82%E5%B8%B8%E3%80%82"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">1. 我们可以手动抛出一个异常。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%88%91%E4%BB%AC%E4%B9%9F%E5%8F%AF%E4%BB%A5%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BC%82%E5%B8%B8%E7%A7%8D%E7%B1%BB%E3%80%82"><span class="nav-number">1.4.3.2.</span> <span class="nav-text">2. 我们也可以自定义异常种类。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E4%BA%86%E8%A7%A3-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6-Garbage-Collector"><span class="nav-number">1.5.</span> <span class="nav-text">四、了解 垃圾回收 Garbage Collector</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E4%BA%86%E8%A7%A3-%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="nav-number">1.6.</span> <span class="nav-text">五、了解 多线程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">1.6.1.</span> <span class="nav-text">线程生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E7%BA%BF%E7%A8%8B"><span class="nav-number">1.6.2.</span> <span class="nav-text">主线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B"><span class="nav-number">1.6.3.</span> <span class="nav-text">创建线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%A1%E7%90%86%E7%BA%BF%E7%A8%8B"><span class="nav-number">1.6.4.</span> <span class="nav-text">管理线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%94%80%E6%AF%81%E7%BA%BF%E7%A8%8B"><span class="nav-number">1.6.5.</span> <span class="nav-text">销毁线程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9C%9F-%C2%B7-%E5%AE%8C%E7%BB%93%E6%92%92%E8%8A%B1%EF%BC%81%EF%BC%81%EF%BC%81"><span class="nav-number">2.</span> <span class="nav-text">真 · 完结撒花！！！</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hanamaru🍥Yabuki"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Hanamaru🍥Yabuki</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/HanaYabuki" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;HanaYabuki" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/496956009" title="Bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;496956009" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>Bilibili</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hanamaru🍥Yabuki</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
