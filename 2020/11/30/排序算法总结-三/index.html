@@ -20,19 +20,23 @@
     var CONFIG = {"hostname":"hanayabuki.gitee.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":240,"display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="这篇博文用于尝试一些 Hexo 的一些骚操作.">
+  <meta name="description" content="排序算法总结(三) - 摘要 😀 排序算法总览 😁 分析几种高空间复杂度的排序算法 😂 代码实现 😃 实用角度分析">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://hanayabuki.gitee.io/2020/11/29/hello-world/index.html">
+<meta property="og:title" content="排序算法总结(三)">
+<meta property="og:url" content="http://hanayabuki.gitee.io/2020/11/30/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93-%E4%B8%89/index.html">
 <meta property="og:site_name" content="花枝丸🍥的博客">
-<meta property="og:description" content="这篇博文用于尝试一些 Hexo 的一些骚操作.">
+<meta property="og:description" content="排序算法总结(三) - 摘要 😀 排序算法总览 😁 分析几种高空间复杂度的排序算法 😂 代码实现 😃 实用角度分析">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-11-28T18:56:50.881Z">
-<meta property="article:modified_time" content="2020-11-29T06:25:13.204Z">
+<meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWFnZXMyMDE3LmNuYmxvZ3MuY29tL2Jsb2cvODQ5NTg5LzIwMTcxMC84NDk1ODktMjAxNzEwMTUyMzMwNDMxNjgtMTg2NzgxNzg2OS5wbmc?x-oss-process=image/format,png">
+<meta property="article:published_time" content="2020-11-30T14:44:31.000Z">
+<meta property="article:modified_time" content="2020-11-30T15:26:16.778Z">
 <meta property="article:author" content="Hanamaru🍥Yabuki">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWFnZXMyMDE3LmNuYmxvZ3MuY29tL2Jsb2cvODQ5NTg5LzIwMTcxMC84NDk1ODktMjAxNzEwMTUyMzMwNDMxNjgtMTg2NzgxNzg2OS5wbmc?x-oss-process=image/format,png">
 
-<link rel="canonical" href="http://hanayabuki.gitee.io/2020/11/29/hello-world/">
+<link rel="canonical" href="http://hanayabuki.gitee.io/2020/11/30/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93-%E4%B8%89/">
 
 
 <script id="page-configurations">
@@ -45,7 +49,7 @@
   };
 </script>
 
-  <title>Hello World | 花枝丸🍥的博客</title>
+  <title>排序算法总结(三) | 花枝丸🍥的博客</title>
   
 
 
@@ -169,7 +173,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://hanayabuki.gitee.io/2020/11/29/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://hanayabuki.gitee.io/2020/11/30/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93-%E4%B8%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -182,7 +186,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Hello World
+          排序算法总结(三)
         </h1>
 
         <div class="post-meta">
@@ -193,7 +197,16 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-11-29 02:56:50 / 修改时间：14:25:13" itemprop="dateCreated datePublished" datetime="2020-11-29T02:56:50+08:00">2020-11-29</time>
+              <time title="创建时间：2020-11-30 22:44:31 / 修改时间：23:26:16" itemprop="dateCreated datePublished" datetime="2020-11-30T22:44:31+08:00">2020-11-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+                </span>
             </span>
 
           
@@ -207,22 +220,30 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>这篇博文用于尝试一些 Hexo 的一些骚操作. </p>
+        <h2 id="排序算法总结-三-摘要"><a href="#排序算法总结-三-摘要" class="headerlink" title="排序算法总结(三) - 摘要"></a>排序算法总结(三) - 摘要</h2><ol>
+<li>😀 排序算法总览</li>
+<li>😁 分析几种高空间复杂度的排序算法</li>
+<li>😂 代码实现</li>
+<li>😃 实用角度分析</li>
+</ol>
 <a id="more"></a>
 
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<h2 id="排序算法总览"><a href="#排序算法总览" class="headerlink" title="排序算法总览"></a>排序算法总览</h2><p><img data-src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWFnZXMyMDE3LmNuYmxvZ3MuY29tL2Jsb2cvODQ5NTg5LzIwMTcxMC84NDk1ODktMjAxNzEwMTUyMzMwNDMxNjgtMTg2NzgxNzg2OS5wbmc?x-oss-process=image/format,png" alt="别人家里偷来的排序介绍表"></p>
+<hr>
+<p>下面详细讲解 <strong>高空间复杂度</strong> 的三种经典排序算法<br>此类算法使用较高的空间复杂度, 来换取时间. 算法比较激进, 适用范围比较偏. </p>
+<h3 id="计数排序-CountingSort"><a href="#计数排序-CountingSort" class="headerlink" title="计数排序 CountingSort"></a>计数排序 CountingSort</h3><h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>计数排序是一种稳定的线性时间排序算法. </p>
+<p>计数排序思路很简单 : </p>
+<ol>
+<li>分配: 扫描原始数组, 以当前值作为下标, 计数器自增</li>
+<li>收集: 扫描计数器数组, 按顺序归还值</li>
+</ol>
+<p>这里的代码实现中, 使用了一个小优化技巧 : 考虑被排序序列的最大最小值, 创建计数序列时, 只取用最小需要的空间就好. </p>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CountingSort</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 排序处理</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sortDo</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> start, <span class="keyword">int</span> size)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 计数序列</span></span><br><span class="line">        <span class="keyword">int</span>[] count = <span class="keyword">new</span> <span class="keyword">int</span>[size];</span><br><span class="line">        <span class="comment">// 计数</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> t : arr) &#123;</span><br><span class="line">            ++count[t-start];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 回填</span></span><br><span class="line">        <span class="keyword">int</span> pos = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;size; ++i) &#123;</span><br><span class="line">            <span class="keyword">int</span> tmp = count[i];</span><br><span class="line">            <span class="keyword">while</span> (tmp &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                arr[pos++] = i+start;</span><br><span class="line">                --tmp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 排序声明</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span>&#123;</span><br><span class="line">        <span class="comment">// 判空</span></span><br><span class="line">        <span class="keyword">if</span>(arr.length==<span class="number">0</span>) &#123; <span class="keyword">return</span>; &#125;</span><br><span class="line">        <span class="comment">// 寻找最大最小值, 以此尽可能的优化排序的空间</span></span><br><span class="line">        <span class="keyword">int</span> min = arr[<span class="number">0</span>], max = arr[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i : arr) &#123;</span><br><span class="line">            min = Math.min(min, i);</span><br><span class="line">            max = Math.max(max, i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 调用排序函数, 传入序列引用, 左初始值, 最小序列长度</span></span><br><span class="line">        sortDo(arr, min, max-min+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+<h4 id="实用分析"><a href="#实用分析" class="headerlink" title="实用分析"></a>实用分析</h4><p>计数排序的时间复杂度较低, 且耗时稳定在线性上.<br>但他的空间复杂度极高, 他需要一个极大的内存空间, 且很容易被浪费. </p>
+<p>计数排序适合数据分布较为密集的整数序列排序. 这种状态下, 他的空间复杂性会变得尽可能低. </p>
+<hr>
+<h3 id="基数排序-RadixSort"><a href="#基数排序-RadixSort" class="headerlink" title="基数排序 RadixSort"></a>基数排序 RadixSort</h3><h4 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h4><h3 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h3>
     </div>
 
     
@@ -250,6 +271,11 @@
 
 
       <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
+              <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
+          </div>
 
         
 
@@ -257,13 +283,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/11/24/%E5%8D%97%E9%82%AE%E6%A0%A1%E7%A7%91%E5%8D%8F-C-%E7%BB%84%E6%8E%88%E8%AF%BE-4/" rel="prev" title="南邮校科协-C#组授课(4)">
-      <i class="fa fa-chevron-left"></i> 南邮校科协-C#组授课(4)
+    <a href="/2020/11/29/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93-%E4%BA%8C/" rel="prev" title="排序算法总结(二)">
+      <i class="fa fa-chevron-left"></i> 排序算法总结(二)
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/11/29/%E5%85%B3%E4%BA%8E%E9%83%A8%E7%BD%B2%E8%BF%99%E4%B8%AA%E5%8D%9A%E5%AE%A2%EF%BC%8C%E6%88%91%E9%83%BD%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88/" rel="next" title="关于部署这个博客，我都做了什么">
-      关于部署这个博客，我都做了什么 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -322,7 +345,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93-%E4%B8%89-%E6%91%98%E8%A6%81"><span class="nav-number">1.</span> <span class="nav-text">排序算法总结(三) - 摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E8%A7%88"><span class="nav-number">2.</span> <span class="nav-text">排序算法总览</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F-CountingSort"><span class="nav-number">2.1.</span> <span class="nav-text">计数排序 CountingSort</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">2.1.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.1.2.</span> <span class="nav-text">代码实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E7%94%A8%E5%88%86%E6%9E%90"><span class="nav-number">2.1.3.</span> <span class="nav-text">实用分析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F-RadixSort"><span class="nav-number">2.2.</span> <span class="nav-text">基数排序 RadixSort</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%9F%E7%90%86-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">原理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A1%B6%E6%8E%92%E5%BA%8F"><span class="nav-number">2.3.</span> <span class="nav-text">桶排序</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
