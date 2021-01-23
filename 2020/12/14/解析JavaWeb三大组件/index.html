@@ -20,16 +20,16 @@
     var CONFIG = {"hostname":"hanayabuki.gitee.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":240,"display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="本文讲解 Java Web 的三神器  🔪 草薙剑 💎 八尺琼勾玉 🔎 八咫之镜">
+  <meta name="description" content="本文讲解 Java EE 的三神器  🔪 草薙剑 💎 八尺琼勾玉 🔎 八咫之镜">
 <meta property="og:type" content="article">
 <meta property="og:title" content="解析JavaWeb三大组件">
 <meta property="og:url" content="http://hanayabuki.gitee.io/2020/12/14/%E8%A7%A3%E6%9E%90JavaWeb%E4%B8%89%E5%A4%A7%E7%BB%84%E4%BB%B6/index.html">
 <meta property="og:site_name" content="花枝丸🍥的博客">
-<meta property="og:description" content="本文讲解 Java Web 的三神器  🔪 草薙剑 💎 八尺琼勾玉 🔎 八咫之镜">
+<meta property="og:description" content="本文讲解 Java EE 的三神器  🔪 草薙剑 💎 八尺琼勾玉 🔎 八咫之镜">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://www.runoob.com/wp-content/uploads/2014/07/servlet-arch.jpg">
 <meta property="article:published_time" content="2020-12-14T12:54:37.000Z">
-<meta property="article:modified_time" content="2020-12-14T13:14:25.394Z">
+<meta property="article:modified_time" content="2020-12-15T13:39:55.618Z">
 <meta property="article:author" content="Hanamaru🍥Yabuki">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
@@ -128,7 +128,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">6</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">7</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -138,7 +138,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">11</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">12</span></a>
 
   </li>
   </ul>
@@ -194,10 +194,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-12-14 20:54:37 / 修改时间：21:14:25" itemprop="dateCreated datePublished" datetime="2020-12-14T20:54:37+08:00">2020-12-14</time>
+              <time title="创建时间：2020-12-14 20:54:37" itemprop="dateCreated datePublished" datetime="2020-12-14T20:54:37+08:00">2020-12-14</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-12-15 21:39:55" itemprop="dateModified" datetime="2020-12-15T21:39:55+08:00">2020-12-15</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -219,7 +225,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>本文讲解 Java Web 的三神器</p>
+        <p>本文讲解 Java EE 的三神器</p>
 <ul>
 <li>🔪 草薙剑</li>
 <li>💎 八尺琼勾玉</li>
@@ -228,14 +234,15 @@
 <a id="more"></a>
 
 <hr>
-<p>胡说的, 是 </p>
+<p>胡说的, 是 Java EE 中Servlet规范的三大组件</p>
 <ul>
 <li><em>Servlet</em></li>
 <li><em>Filter</em></li>
 <li><em>Listener</em></li>
 </ul>
+<p>本文内容主要为后续深入研究 Spring 打基础, 所以不包含任何实例, 只有原理剖析.<br>后续可能会有三神器在 Spring 中的实现.</p>
 <hr>
-<h2 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h2><h3 id="简述定义"><a href="#简述定义" class="headerlink" title="简述定义"></a>简述定义</h3><p>Java Servlet 是运行在 Web 服务器或应用服务器上的程序，它是作为来自 Web 浏览器或其他 HTTP 客户端的请求和 HTTP 服务器上的数据库或应用程序之间的中间层。</p>
+<h2 id="Servlet-Java服务器程序"><a href="#Servlet-Java服务器程序" class="headerlink" title="Servlet Java服务器程序"></a>Servlet Java服务器程序</h2><h3 id="简述定义"><a href="#简述定义" class="headerlink" title="简述定义"></a>简述定义</h3><p>Java Servlet 是运行在 Web 服务器或应用服务器上的程序，它是作为来自 Web 浏览器或其他 HTTP 客户端的请求和 HTTP 服务器上的数据库或应用程序之间的中间层。</p>
 <h3 id="架构示意图"><a href="#架构示意图" class="headerlink" title="架构示意图"></a>架构示意图</h3><p><img data-src="https://www.runoob.com/wp-content/uploads/2014/07/servlet-arch.jpg" alt="转自菜鸟教程"></p>
 <p>Servlet 主要执行以下任务 : </p>
 <ul>
@@ -248,7 +255,62 @@
 <blockquote>
 <p>总结来讲 : 显式或隐式的收发 及 处理 数据</p>
 </blockquote>
-<h3 id="代码级实现"><a href="#代码级实现" class="headerlink" title="代码级实现"></a>代码级实现</h3>
+<h3 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h3><p>Servlet 可以使用 <code>javax.servlet</code> 和 <code>javax.servlet.http</code> 包创建. </p>
+<p>常用的实现方式有三种 : </p>
+<ol>
+<li>实现 <code>Servlet</code> 接口</li>
+<li>继承 <code>GenericServlet</code> 类</li>
+<li>继承 <code>HttpServlet</code> 类</li>
+</ol>
+<p>我们先不急写, 一层一层观察他的工作结构</p>
+<h4 id="Servlet接口"><a href="#Servlet接口" class="headerlink" title="Servlet接口"></a>Servlet接口</h4><p>Servlet接口很简单, 就五个函数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> javax.servlet;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Servlet</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(ServletConfig var1)</span> <span class="keyword">throws</span> ServletException</span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">service</span><span class="params">(ServletRequest var1, ServletResponse var2)</span> <span class="keyword">throws</span> ServletException, IOException</span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function">String <span class="title">getServletInfo</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function">ServletConfig <span class="title">getServletConfig</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="init-初始化"><a href="#init-初始化" class="headerlink" title="init 初始化"></a>init 初始化</h5><p>传入 <code>ServletConfig</code>对象, 初始化 <code>Servlet</code>容器</p>
+<h5 id="service-响应请求"><a href="#service-响应请求" class="headerlink" title="service 响应请求"></a>service 响应请求</h5><p>引用传入 <em>Request</em> 和 <em>Response</em>, 适当的时候负责调用 <code>doGet</code>, <code>doPost</code> 方法. 我们需要根据客户端的类型重写. </p>
+<h5 id="destroy-摧毁"><a href="#destroy-摧毁" class="headerlink" title="destroy 摧毁"></a>destroy 摧毁</h5><p>生命周期只有三个函数, 一目了然. 其余两个都是简单的 get, 不做解释.</p>
+<h4 id="观察-GenericServlet-类"><a href="#观察-GenericServlet-类" class="headerlink" title="观察 GenericServlet 类"></a>观察 GenericServlet 类</h4><p>可以看到, <code>GenericServlet</code>类同样继承了 <code>Servlet</code> 接口, 这种继承实现的区别是 :</p>
+<ol>
+<li>给出了许多默认实现</li>
+<li>更改了 <code>ServletConfig</code> 的作用域, 改为对外开放. </li>
+<li>仍然没有实现 <code>Service</code>, 所以没用….</li>
+</ol>
+<h4 id="分析-HttpServlet"><a href="#分析-HttpServlet" class="headerlink" title="分析 HttpServlet"></a>分析 HttpServlet</h4><p>我们直接继承 <code>HttpServlet</code> 发现居然没有报错!!!</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.hana.container;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>也就是说 <code>HttpServlet</code> 的 <code>service</code> 方法已经替我们做了复杂的请求方法判断. 我们唯一要做的就是 <strong>重写 <code>doGet</code> 和 <code>doPost</code> 方法</strong></p>
+<p>到现在, Servlet 的基本结构我们已经理清了.</p>
+<hr>
+<h2 id="Filter-过滤器"><a href="#Filter-过滤器" class="headerlink" title="Filter 过滤器"></a>Filter 过滤器</h2><h3 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h3><p>顾名思义, 可以动态地拦截请求和响应，以变换或使用包含在请求或响应中的信息。</p>
+<p>可以实现以下目的：</p>
+<ul>
+<li>在客户端的请求访问后端资源之前，拦截这些请求。</li>
+<li>在服务器的响应发送回客户端之前，处理这些响应。</li>
+</ul>
+<h3 id="代码分析-1"><a href="#代码分析-1" class="headerlink" title="代码分析"></a>代码分析</h3><p>过滤器是一个实现了 javax.servlet.Filter 接口的 Java 类.<br>接口共有三条函数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(FilterConfig filterConfig)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doFilter</span> <span class="params">(ServletRequest request, ServletResponse response, FilterChain fc)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>简单观察生命周期<br>只有 <code>doFilter</code> 一个核心函数. 也就是说, 我们只需要实现这里的内容即可实现过滤. </p>
+<hr>
+<h2 id="Listener-监听器"><a href="#Listener-监听器" class="headerlink" title="Listener 监听器"></a>Listener 监听器</h2><blockquote>
+<p>理解监听器首先要明白Java中如何实现异步回调….</p>
+</blockquote>
+<h3 id="简述-1"><a href="#简述-1" class="headerlink" title="简述"></a>简述</h3><p>监听器用于监听web应用中某些对象、信息的创建、销毁、增加，修改，删除等动作的发生，然后作出相应的响应处理。<br>当范围对象的状态发生变化的时候，服务器自动调用监听器对象中的方法。<br>常用于统计在线人数和在线用户，系统加载时进行信息初始化，统计网站的访问量等等。</p>
+<h3 id="代码分析-2"><a href="#代码分析-2" class="headerlink" title="代码分析"></a>代码分析</h3><p>最常用的监听器实现是 <code>ServletContextListener</code> 接口的类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> javax.servlet;</span><br><span class="line"><span class="keyword">import</span> java.util.EventListener;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ServletContextListener</span> <span class="keyword">extends</span> <span class="title">EventListener</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">contextInitialized</span><span class="params">(ServletContextEvent sce)</span> </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">contextDestroyed</span><span class="params">(ServletContextEvent sce)</span> </span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们可以看到有默认实现的两个方法. </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebListener</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyListener</span> <span class="keyword">implements</span> <span class="title">ServletContextListener</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>任何标注为@WebListener，且实现了特定接口的类会被Web服务器自动初始。它会在整个Web应用程序初始化完成后，以及Web应用程序关闭后获得回调通知。</p>
+<p>我们可以把初始化数据库连接池等工作放到contextInitialized()回调方法中，把清理资源的工作放到contextDestroyed()回调方法中，因为Web服务器保证在contextInitialized()执行后，才会接受用户的HTTP请求。</p>
+<p>常用 Listener 还有 : </p>
+<ul>
+<li><code>HttpSessionListener</code>：监听HttpSession的创建和销毁事件；</li>
+<li><code>ServletRequestListener</code>：监听ServletRequest请求的创建和销毁事件；</li>
+<li><code>ServletRequestAttributeListener</code>：监听ServletRequest请求的属性变化事件（即调用ServletRequest.setAttribute()方法）；</li>
+<li><code>ServletContextAttributeListener</code>：监听ServletContext的属性变化事件（即调用ServletContext.setAttribute()方法）；</li>
+</ul>
+<p>值得注意的是, Web服务器会对每一个WebApp创建一个与之对应的独一无二的实例 <code>ServletContext</code>, 我们在 <code>Listener</code> 里编写的两个回调方法都是对应<strong>该实例</strong>的创建和销毁.</p>
+<hr>
+<h2 id="完结撒花"><a href="#完结撒花" class="headerlink" title="完结撒花"></a><del>完结撒花</del></h2>
     </div>
 
     
@@ -290,7 +352,10 @@
     <a href="/2020/12/02/%E8%A7%A3%E6%9E%90%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%B8%80-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/" rel="prev" title="解析设计模式(一) - 面向对象设计原则">
       <i class="fa fa-chevron-left"></i> 解析设计模式(一) - 面向对象设计原则
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/01/23/%E7%AE%97%E6%B3%95%E8%A7%A3%E8%AF%BB-%E4%B8%80-%E5%B9%B6%E6%9F%A5%E9%9B%86/" rel="next" title="算法解读(一) - 并查集">
+      算法解读(一) - 并查集 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -349,7 +414,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Servlet"><span class="nav-number">1.</span> <span class="nav-text">Servlet</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">简述定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%B6%E6%9E%84%E7%A4%BA%E6%84%8F%E5%9B%BE"><span class="nav-number">1.2.</span> <span class="nav-text">架构示意图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E7%BA%A7%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.3.</span> <span class="nav-text">代码级实现</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Servlet-Java%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A8%8B%E5%BA%8F"><span class="nav-number">1.</span> <span class="nav-text">Servlet Java服务器程序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">简述定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%B6%E6%9E%84%E7%A4%BA%E6%84%8F%E5%9B%BE"><span class="nav-number">1.2.</span> <span class="nav-text">架构示意图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90"><span class="nav-number">1.3.</span> <span class="nav-text">代码分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Servlet%E6%8E%A5%E5%8F%A3"><span class="nav-number">1.3.1.</span> <span class="nav-text">Servlet接口</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#init-%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">init 初始化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#service-%E5%93%8D%E5%BA%94%E8%AF%B7%E6%B1%82"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">service 响应请求</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#destroy-%E6%91%A7%E6%AF%81"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">destroy 摧毁</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%82%E5%AF%9F-GenericServlet-%E7%B1%BB"><span class="nav-number">1.3.2.</span> <span class="nav-text">观察 GenericServlet 类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E6%9E%90-HttpServlet"><span class="nav-number">1.3.3.</span> <span class="nav-text">分析 HttpServlet</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Filter-%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="nav-number">2.</span> <span class="nav-text">Filter 过滤器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0"><span class="nav-number">2.1.</span> <span class="nav-text">简述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90-1"><span class="nav-number">2.2.</span> <span class="nav-text">代码分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Listener-%E7%9B%91%E5%90%AC%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">Listener 监听器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0-1"><span class="nav-number">3.1.</span> <span class="nav-text">简述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90-2"><span class="nav-number">3.2.</span> <span class="nav-text">代码分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%8C%E7%BB%93%E6%92%92%E8%8A%B1"><span class="nav-number">4.</span> <span class="nav-text">完结撒花</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -365,7 +430,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -378,7 +443,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -413,7 +478,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
