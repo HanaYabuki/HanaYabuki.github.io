@@ -20,23 +20,21 @@
     var CONFIG = {"hostname":"hanayabuki.gitee.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":240,"display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="排序算法总结(三) - 摘要本篇暂咕">
+  <meta name="description" content="本文将利用Java语言, 解析 Trie树 结构在算法中的应用 算法概要 结构性质 实现 使用条件">
 <meta property="og:type" content="article">
-<meta property="og:title" content="排序算法总结(三)">
-<meta property="og:url" content="http://hanayabuki.gitee.io/2020/11/30/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93-%E4%B8%89/index.html">
+<meta property="og:title" content="算法解读(二) - Trie树">
+<meta property="og:url" content="http://hanayabuki.gitee.io/2021/01/25/%E7%AE%97%E6%B3%95%E8%A7%A3%E8%AF%BB-%E4%BA%8C-Trie%E6%A0%91/index.html">
 <meta property="og:site_name" content="花枝丸🍥的博客">
-<meta property="og:description" content="排序算法总结(三) - 摘要本篇暂咕">
+<meta property="og:description" content="本文将利用Java语言, 解析 Trie树 结构在算法中的应用 算法概要 结构性质 实现 使用条件">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWFnZXMyMDE3LmNuYmxvZ3MuY29tL2Jsb2cvODQ5NTg5LzIwMTcxMC84NDk1ODktMjAxNzEwMTUyMzMwNDMxNjgtMTg2NzgxNzg2OS5wbmc?x-oss-process=image/format,png">
-<meta property="article:published_time" content="2020-11-30T14:44:31.000Z">
-<meta property="article:modified_time" content="2020-12-14T08:26:43.143Z">
+<meta property="article:published_time" content="2021-01-25T10:38:35.000Z">
+<meta property="article:modified_time" content="2021-01-25T11:05:30.744Z">
 <meta property="article:author" content="Hanamaru🍥Yabuki">
-<meta property="article:tag" content="排序算法">
 <meta property="article:tag" content="Java">
+<meta property="article:tag" content="LeetCode常用算法">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWFnZXMyMDE3LmNuYmxvZ3MuY29tL2Jsb2cvODQ5NTg5LzIwMTcxMC84NDk1ODktMjAxNzEwMTUyMzMwNDMxNjgtMTg2NzgxNzg2OS5wbmc?x-oss-process=image/format,png">
 
-<link rel="canonical" href="http://hanayabuki.gitee.io/2020/11/30/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93-%E4%B8%89/">
+<link rel="canonical" href="http://hanayabuki.gitee.io/2021/01/25/%E7%AE%97%E6%B3%95%E8%A7%A3%E8%AF%BB-%E4%BA%8C-Trie%E6%A0%91/">
 
 
 <script id="page-configurations">
@@ -49,7 +47,7 @@
   };
 </script>
 
-  <title>排序算法总结(三) | 花枝丸🍥的博客</title>
+  <title>算法解读(二) - Trie树 | 花枝丸🍥的博客</title>
   
 
 
@@ -173,7 +171,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://hanayabuki.gitee.io/2020/11/30/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93-%E4%B8%89/">
+    <link itemprop="mainEntityOfPage" href="http://hanayabuki.gitee.io/2021/01/25/%E7%AE%97%E6%B3%95%E8%A7%A3%E8%AF%BB-%E4%BA%8C-Trie%E6%A0%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -186,7 +184,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          排序算法总结(三)
+          算法解读(二) - Trie树
         </h1>
 
         <div class="post-meta">
@@ -195,16 +193,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-11-30 22:44:31" itemprop="dateCreated datePublished" datetime="2020-11-30T22:44:31+08:00">2020-11-30</time>
+              <time title="创建时间：2021-01-25 18:38:35 / 修改时间：19:05:30" itemprop="dateCreated datePublished" datetime="2021-01-25T18:38:35+08:00">2021-01-25</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-14 16:26:43" itemprop="dateModified" datetime="2020-12-14T16:26:43+08:00">2020-12-14</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -226,35 +218,26 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="排序算法总结-三-摘要"><a href="#排序算法总结-三-摘要" class="headerlink" title="排序算法总结(三) - 摘要"></a>排序算法总结(三) - 摘要</h2><p>本篇暂咕</p>
+        <h1 id="本文将利用Java语言-解析-Trie树-结构在算法中的应用"><a href="#本文将利用Java语言-解析-Trie树-结构在算法中的应用" class="headerlink" title="本文将利用Java语言, 解析 Trie树 结构在算法中的应用"></a>本文将利用Java语言, 解析 <em>Trie树</em> 结构在算法中的应用</h1><ol>
+<li>算法概要</li>
+<li>结构性质</li>
+<li>实现</li>
+<li>使用条件</li>
+</ol>
 <a id="more"></a>
 
-<ol>
-<li>😀 排序算法总览</li>
-<li>😁 分析几种高空间复杂度的排序算法</li>
-<li>😂 代码实现</li>
-<li>😃 实用角度分析</li>
+<h2 id="什么是-Trie-树"><a href="#什么是-Trie-树" class="headerlink" title="什么是 Trie 树 ?"></a>什么是 Trie 树 ?</h2><p>Trie树 (踹树), 又称 <em>单词查找树</em>, <em>字典树</em>, <em>前缀树</em>. 是哈希树的一个变种. 可以利用公共的前缀来节约查找时间, 减少无用的字符串比较.</p>
+<h2 id="Trie树-有什么性质"><a href="#Trie树-有什么性质" class="headerlink" title="Trie树 有什么性质 ?"></a>Trie树 有什么性质 ?</h2><ol>
+<li>根节点不包含字符;</li>
+<li>除了根节点外, 每个节点都只包含一个字符. 同时, 路上经过的字符连接起来即为该节点对应字符串;</li>
+<li>每个节点的子节点代表的字符串互不相同.</li>
 </ol>
-<!--more-->
+<h2 id="Trie树-怎么实现"><a href="#Trie树-怎么实现" class="headerlink" title="Trie树 怎么实现 ?"></a>Trie树 怎么实现 ?</h2><p>以 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/implement-trie-prefix-tree/">LeetCode.208</a> 为例   </p>
+<p>只适用于 仅包含小写字母的情况</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Trie</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> TrieNode root;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Trie</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        root = <span class="keyword">new</span> TrieNode();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(String word)</span> </span>&#123;</span><br><span class="line">        TrieNode now = root;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;word.length(); ++i) &#123;</span><br><span class="line">            <span class="keyword">char</span> c = word.charAt(i);</span><br><span class="line">            <span class="keyword">if</span>( !now.haveNext(c) ) &#123;</span><br><span class="line">                now.setNext(c, <span class="keyword">new</span> TrieNode());</span><br><span class="line">            &#125;</span><br><span class="line">            now = now.getNext(c);</span><br><span class="line">        &#125;</span><br><span class="line">        now.setEnd();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">search</span><span class="params">(String word)</span> </span>&#123;</span><br><span class="line">        TrieNode tmp = searchPrefix(word);</span><br><span class="line">        <span class="keyword">return</span> tmp!=<span class="keyword">null</span> &amp;&amp; tmp.getEnd();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">startsWith</span><span class="params">(String prefix)</span> </span>&#123;</span><br><span class="line">        TrieNode tmp = searchPrefix(prefix);</span><br><span class="line">        <span class="keyword">return</span> tmp!=<span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> TrieNode <span class="title">searchPrefix</span><span class="params">(String word)</span> </span>&#123;</span><br><span class="line">        TrieNode now = root;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;word.length(); ++i) &#123;</span><br><span class="line">            <span class="keyword">char</span> c = word.charAt(i);</span><br><span class="line">            <span class="keyword">if</span>(now.haveNext(c)) &#123;</span><br><span class="line">                now = now.getNext(c);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> now;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TrieNode</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> TrieNode[] nodeList;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> isEnd;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TrieNode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        isEnd = <span class="keyword">false</span>;</span><br><span class="line">        nodeList = <span class="keyword">new</span> TrieNode[<span class="number">26</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setNext</span><span class="params">(<span class="keyword">char</span> c, TrieNode node)</span> </span>&#123;</span><br><span class="line">        nodeList[c-<span class="string">&#x27;a&#x27;</span>] = node;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">haveNext</span><span class="params">(<span class="keyword">char</span> c)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> nodeList[c-<span class="string">&#x27;a&#x27;</span>] != <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> TrieNode <span class="title">getNext</span><span class="params">(<span class="keyword">char</span> c)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> nodeList[c-<span class="string">&#x27;a&#x27;</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setEnd</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        isEnd = <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">getEnd</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> isEnd;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="经典再现之排序算法总览"><a href="#经典再现之排序算法总览" class="headerlink" title="经典再现之排序算法总览"></a>经典再现之排序算法总览</h2><p><img data-src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWFnZXMyMDE3LmNuYmxvZ3MuY29tL2Jsb2cvODQ5NTg5LzIwMTcxMC84NDk1ODktMjAxNzEwMTUyMzMwNDMxNjgtMTg2NzgxNzg2OS5wbmc?x-oss-process=image/format,png" alt="别人家里偷来的排序介绍表"></p>
-<hr>
-<p>下面详细讲解 <strong>高空间复杂度</strong> 的三种经典排序算法<br>此类算法使用较高的空间复杂度, 来换取时间. 算法比较激进, 适用范围比较偏门. </p>
-<h3 id="计数排序-CountingSort"><a href="#计数排序-CountingSort" class="headerlink" title="计数排序 CountingSort"></a>计数排序 CountingSort</h3><h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>计数排序是一种稳定的线性时间排序算法. </p>
-<p>计数排序思路很简单 : 即 记录每个数据的数量, 然后依次回填到原数组中.</p>
-<p>实现思路也很简短 : </p>
-<ol>
-<li>分配: 扫描原始数组, 以当前值作为下标, 计数器自增</li>
-<li>收集: 扫描计数器数组, 按顺序归还值</li>
-</ol>
-<p>这里的代码实现中, 使用了一个小优化技巧 : 考虑被排序序列的最大最小值, 创建计数序列时, 只取用最小需要的空间就好. </p>
-<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CountingSort</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 排序处理</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sortDo</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> start, <span class="keyword">int</span> size)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 计数序列</span></span><br><span class="line">        <span class="keyword">int</span>[] count = <span class="keyword">new</span> <span class="keyword">int</span>[size];</span><br><span class="line">        <span class="comment">// 计数</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> t : arr) &#123;</span><br><span class="line">            ++count[t-start];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 回填</span></span><br><span class="line">        <span class="keyword">int</span> pos = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;size; ++i) &#123;</span><br><span class="line">            <span class="keyword">int</span> tmp = count[i];</span><br><span class="line">            <span class="keyword">while</span> (tmp &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                arr[pos++] = i+start;</span><br><span class="line">                --tmp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 排序声明</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span>&#123;</span><br><span class="line">        <span class="comment">// 判空</span></span><br><span class="line">        <span class="keyword">if</span>(arr.length==<span class="number">0</span>) &#123; <span class="keyword">return</span>; &#125;</span><br><span class="line">        <span class="comment">// 寻找最大最小值, 以此尽可能的优化排序的空间</span></span><br><span class="line">        <span class="keyword">int</span> min = arr[<span class="number">0</span>], max = arr[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i : arr) &#123;</span><br><span class="line">            min = Math.min(min, i);</span><br><span class="line">            max = Math.max(max, i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 调用排序函数, 传入序列引用, 左初始值, 最小序列长度</span></span><br><span class="line">        sortDo(arr, min, max-min+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Trie树-适用于什么情况"><a href="#Trie树-适用于什么情况" class="headerlink" title="Trie树 适用于什么情况 ?"></a>Trie树 适用于什么情况 ?</h2><p>统计, 保存大量的字符串.<br>字符串快速匹配查询.</p>
 
-<h4 id="实用分析"><a href="#实用分析" class="headerlink" title="实用分析"></a>实用分析</h4><p>计数排序的时间复杂度较低, 且耗时稳定在线性上.<br>但他的空间复杂度极高, 他需要一个极大的内存空间, 且很容易被浪费. </p>
-<p>计数排序适合数据分布较为密集的整数序列排序. 这种状态下, 他的空间复杂性会变得尽可能低. </p>
-<hr>
-<h3 id="基数排序-RadixSort"><a href="#基数排序-RadixSort" class="headerlink" title="基数排序 RadixSort"></a>基数排序 RadixSort</h3><h4 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h4><hr>
-<h3 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h3>
     </div>
 
     
@@ -284,8 +267,8 @@
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="tag"><i class="fa fa-tag"></i> 排序算法</a>
               <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
+              <a href="/tags/LeetCode%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95/" rel="tag"><i class="fa fa-tag"></i> LeetCode常用算法</a>
           </div>
 
         
@@ -294,13 +277,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/11/29/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93-%E4%BA%8C/" rel="prev" title="排序算法总结(二)">
-      <i class="fa fa-chevron-left"></i> 排序算法总结(二)
+    <a href="/2021/01/23/%E7%AE%97%E6%B3%95%E8%A7%A3%E8%AF%BB-%E4%B8%80-%E5%B9%B6%E6%9F%A5%E9%9B%86/" rel="prev" title="算法解读(一) - 并查集">
+      <i class="fa fa-chevron-left"></i> 算法解读(一) - 并查集
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/12/02/%E8%A7%A3%E6%9E%90%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%B8%80-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/" rel="next" title="解析设计模式(一) - 面向对象设计原则">
-      解析设计模式(一) - 面向对象设计原则 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -359,7 +339,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93-%E4%B8%89-%E6%91%98%E8%A6%81"><span class="nav-number">1.</span> <span class="nav-text">排序算法总结(三) - 摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8%E5%86%8D%E7%8E%B0%E4%B9%8B%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E8%A7%88"><span class="nav-number">2.</span> <span class="nav-text">经典再现之排序算法总览</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F-CountingSort"><span class="nav-number">2.1.</span> <span class="nav-text">计数排序 CountingSort</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">2.1.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.1.2.</span> <span class="nav-text">代码实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E7%94%A8%E5%88%86%E6%9E%90"><span class="nav-number">2.1.3.</span> <span class="nav-text">实用分析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F-RadixSort"><span class="nav-number">2.2.</span> <span class="nav-text">基数排序 RadixSort</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%9F%E7%90%86-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">原理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A1%B6%E6%8E%92%E5%BA%8F"><span class="nav-number">2.3.</span> <span class="nav-text">桶排序</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%AC%E6%96%87%E5%B0%86%E5%88%A9%E7%94%A8Java%E8%AF%AD%E8%A8%80-%E8%A7%A3%E6%9E%90-Trie%E6%A0%91-%E7%BB%93%E6%9E%84%E5%9C%A8%E7%AE%97%E6%B3%95%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">本文将利用Java语言, 解析 Trie树 结构在算法中的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Trie-%E6%A0%91"><span class="nav-number">1.1.</span> <span class="nav-text">什么是 Trie 树 ?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Trie%E6%A0%91-%E6%9C%89%E4%BB%80%E4%B9%88%E6%80%A7%E8%B4%A8"><span class="nav-number">1.2.</span> <span class="nav-text">Trie树 有什么性质 ?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Trie%E6%A0%91-%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.3.</span> <span class="nav-text">Trie树 怎么实现 ?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Trie%E6%A0%91-%E9%80%82%E7%94%A8%E4%BA%8E%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5"><span class="nav-number">1.4.</span> <span class="nav-text">Trie树 适用于什么情况 ?</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
